@@ -70,8 +70,59 @@ external interface ChalkInstance {
     var bgWhiteBright: ChalkInstance /* this */
 }
 
-@JsName("default")
-external var chalk: ChalkInstance
+external var level: Any
+external var rgb: (red: Number, green: Number, blue: Number) -> ChalkInstance
+external var hex: (color: String) -> ChalkInstance
+external var ansi256: (index: Number) -> ChalkInstance
+external var bgRgb: (red: Number, green: Number, blue: Number) -> ChalkInstance
+external var bgHex: (color: String) -> ChalkInstance
+external var bgAnsi256: (index: Number) -> ChalkInstance
+external var reset: ChalkInstance /* this */
+external var bold: ChalkInstance /* this */
+external var dim: ChalkInstance /* this */
+external var italic: ChalkInstance /* this */
+external var underline: ChalkInstance /* this */
+external var overline: ChalkInstance /* this */
+external var inverse: ChalkInstance /* this */
+external var hidden: ChalkInstance /* this */
+external var strikethrough: ChalkInstance /* this */
+external var visible: ChalkInstance /* this */
+external var black: ChalkInstance /* this */
+external var red: ChalkInstance /* this */
+external var green: ChalkInstance /* this */
+external var yellow: ChalkInstance /* this */
+external var blue: ChalkInstance /* this */
+external var magenta: ChalkInstance /* this */
+external var cyan: ChalkInstance /* this */
+external var white: ChalkInstance /* this */
+external var gray: ChalkInstance /* this */
+external var grey: ChalkInstance /* this */
+external var blackBright: ChalkInstance /* this */
+external var redBright: ChalkInstance /* this */
+external var greenBright: ChalkInstance /* this */
+external var yellowBright: ChalkInstance /* this */
+external var blueBright: ChalkInstance /* this */
+external var magentaBright: ChalkInstance /* this */
+external var cyanBright: ChalkInstance /* this */
+external var whiteBright: ChalkInstance /* this */
+external var bgBlack: ChalkInstance /* this */
+external var bgRed: ChalkInstance /* this */
+external var bgGreen: ChalkInstance /* this */
+external var bgYellow: ChalkInstance /* this */
+external var bgBlue: ChalkInstance /* this */
+external var bgMagenta: ChalkInstance /* this */
+external var bgCyan: ChalkInstance /* this */
+external var bgWhite: ChalkInstance /* this */
+external var bgGray: ChalkInstance /* this */
+external var bgGrey: ChalkInstance /* this */
+external var bgBlackBright: ChalkInstance /* this */
+external var bgRedBright: ChalkInstance /* this */
+external var bgGreenBright: ChalkInstance /* this */
+external var bgYellowBright: ChalkInstance /* this */
+external var bgBlueBright: ChalkInstance /* this */
+external var bgMagentaBright: ChalkInstance /* this */
+external var bgCyanBright: ChalkInstance /* this */
+external var bgWhiteBright: ChalkInstance /* this */
 
 external var chalkStderr: Any
 
