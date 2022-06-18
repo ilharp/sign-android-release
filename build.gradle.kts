@@ -28,6 +28,7 @@ dependencies {
     implementation(npm("@actions/core", "^1"))
     implementation(npm("@actions/exec", "^1"))
     implementation(npm("@actions/io", "^1"))
+    implementation(npm("chalk", "^4"))
 }
 
 kotlin {
