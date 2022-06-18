@@ -1,5 +1,5 @@
-name: Sign Android release
-description: An action to sign an Android release APK or AAB
+name: Sign Android release 2
+description: Sign APK or AAB files
 author: Il Harper
 runs:
   using: node16
