@@ -8,7 +8,6 @@ package actions.io
 
 import kotlin.js.Promise
 
-
 external interface CopyOptions {
     var recursive: Boolean?
         get() = definedExternally

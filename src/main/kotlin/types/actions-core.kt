@@ -18,8 +18,8 @@ external interface InputOptions {
 }
 
 external enum class ExitCode {
-    Success /* = 0 */,
-    Failure /* = 1 */
+    Success, // = 0
+    Failure // = 1
 }
 
 external interface AnnotationProperties {

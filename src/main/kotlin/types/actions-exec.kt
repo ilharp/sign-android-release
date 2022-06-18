@@ -9,7 +9,6 @@ package actions.exec
 import Buffer
 import kotlin.js.Promise
 
-
 external fun exec(
     commandLine: String,
     args: Array<String> = definedExternally,
