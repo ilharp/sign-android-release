@@ -24,6 +24,10 @@ allprojects {
 
 dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-nodejs:0.0.7")
+
+    implementation(npm("@actions/core", "^1"))
+    implementation(npm("@actions/exec", "^1"))
+    implementation(npm("@actions/io", "^1"))
 }
 
 kotlin {
