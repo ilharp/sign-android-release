@@ -49,6 +49,7 @@ configure<com.diffplug.gradle.spotless.SpotlessExtension> {
     }
 
     kotlin {
+        target("**/*.kt")
         ktlint().setUseExperimental(true)
         trimTrailingWhitespace()
         indentWithSpaces()
@@ -56,6 +57,7 @@ configure<com.diffplug.gradle.spotless.SpotlessExtension> {
     }
 
     kotlinGradle {
+        target("**/*.kts")
         ktlint().setUseExperimental(true)
         trimTrailingWhitespace()
         indentWithSpaces()
