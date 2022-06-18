@@ -2,30 +2,26 @@
     "PackageDirectoryMismatch"
 )
 
-package types.actions.exec
+@file:JsModule("@actions/exec")
+
+package actions.exec
 
 import Buffer
 import kotlin.js.Promise
 
 
-@JsModule("@actions/exec")
-@JsNonModule
 external fun exec(
     commandLine: String,
     args: Array<String> = definedExternally,
     options: ExecOptions = definedExternally
 ): Promise<Number>
 
-@JsModule("@actions/exec")
-@JsNonModule
 external fun getExecOutput(
     commandLine: String,
     args: Array<String> = definedExternally,
     options: ExecOptions = definedExternally
 ): Promise<ExecOutput>
 
-@JsModule("@actions/exec")
-@JsNonModule
 external interface `T$0` {
     @nativeGetter
     operator fun get(key: String): String?
@@ -34,8 +30,6 @@ external interface `T$0` {
     operator fun set(key: String, value: String)
 }
 
-@JsModule("@actions/exec")
-@JsNonModule
 external interface ExecOptions {
     var cwd: String?
         get() = definedExternally
@@ -72,16 +66,12 @@ external interface ExecOptions {
         set(value) = definedExternally
 }
 
-@JsModule("@actions/exec")
-@JsNonModule
 external interface ExecOutput {
     var exitCode: Number
     var stdout: String
     var stderr: String
 }
 
-@JsModule("@actions/exec")
-@JsNonModule
 external interface ExecListeners {
     var stdout: ((data: Buffer) -> Unit)?
         get() = definedExternally
@@ -100,6 +90,4 @@ external interface ExecListeners {
         set(value) = definedExternally
 }
 
-@JsModule("@actions/exec")
-@JsNonModule
 external fun argStringToArray(argString: String): Array<String>

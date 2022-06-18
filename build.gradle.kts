@@ -32,9 +32,9 @@ dependencies {
 
 kotlin {
     js(LEGACY) {
+        useCommonJs()
         binaries.executable()
-        nodejs {
-        }
+        nodejs()
     }
 }
 
