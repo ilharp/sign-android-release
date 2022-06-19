@@ -206,7 +206,9 @@ suspend fun signAab(sourceFile: String, inputs: ActionInputs, buildTools: BuildT
             "-keystore",
             inputs.signingKey,
             "-storepass",
-            inputs.keyStorePassword
+            inputs.keyStorePassword,
+            "-signedjar",
+            signedFile
         )
             .apply {
                 if (!inputs.keyPassword.isNullOrBlank()) {
