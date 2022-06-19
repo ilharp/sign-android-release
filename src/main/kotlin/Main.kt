@@ -211,7 +211,7 @@ suspend fun signAab(sourceFile: String, inputs: ActionInputs, buildTools: BuildT
             .apply {
                 if (!inputs.keyPassword.isNullOrBlank()) {
                     add("-keypass")
-                    add("pass:${inputs.keyPassword}")
+                    add(inputs.keyPassword!!)
                 }
 
                 add(sourceFilePath)
