@@ -215,9 +215,6 @@
       return endsWith(closure$sourceFile, '.apk') ? promise(coroutines.GlobalScope, void 0, void 0, mainIntl$lambda$lambda$lambda(closure$sourceFile, closure$inputs, closure$buildTools, closure$signedFile)) : promise(coroutines.GlobalScope, void 0, void 0, mainIntl$lambda$lambda$lambda_0(closure$sourceFile, closure$inputs, closure$buildTools, closure$signedFile));
     };
   }
-  function mainIntl$lambda_0(it) {
-    return it.second;
-  }
   function mainIntl$ObjectLiteral() {
     this.data_s6r7pf$_0 = 'Index';
     this.header_euu5q8$_0 = true;
@@ -297,7 +294,7 @@
     interfaces: []
   };
   function mainIntl$lambda$lambda$ObjectLiteral(closure$index) {
-    this.data_v5at8b$_0 = closure$index.toString();
+    this.data_v5at8b$_0 = (closure$index + 1 | 0).toString();
   }
   Object.defineProperty(mainIntl$lambda$lambda$ObjectLiteral.prototype, 'data', {
     configurable: true,
@@ -369,7 +366,6 @@
       try {
         switch (this.state_0) {
           case 0:
-            var tmp$, tmp$_0;
             this.local$inputs = collectInputs();
             this.state_0 = 2;
             this.result_0 = collectBuildTools(this.local$inputs, this);
@@ -398,25 +394,25 @@
           case 4:
             var $receiver_0 = this.result_0;
             var destination = ArrayList_init($receiver_0.length);
-            var tmp$_1;
-            for (tmp$_1 = 0; tmp$_1 !== $receiver_0.length; ++tmp$_1) {
-              var item = $receiver_0[tmp$_1];
+            var tmp$;
+            for (tmp$ = 0; tmp$ !== $receiver_0.length; ++tmp$) {
+              var item = $receiver_0[tmp$];
               destination.add_11rb$($module$path.relative($module$process.cwd(), item));
             }
 
             var destination_0 = ArrayList_init(collectionSizeOrDefault(destination, 10));
-            var tmp$_2;
-            tmp$_2 = destination.iterator();
-            while (tmp$_2.hasNext()) {
-              var item_0 = tmp$_2.next();
+            var tmp$_0;
+            tmp$_0 = destination.iterator();
+            while (tmp$_0.hasNext()) {
+              var item_0 = tmp$_0.next();
               destination_0.add_11rb$($module$path.relative(this.local$inputs.releaseDir, item_0));
             }
 
             var destination_1 = ArrayList_init(collectionSizeOrDefault(destination_0, 10));
-            var tmp$_3;
-            tmp$_3 = destination_0.iterator();
-            while (tmp$_3.hasNext()) {
-              var item_1 = tmp$_3.next();
+            var tmp$_1;
+            tmp$_1 = destination_0.iterator();
+            while (tmp$_1.hasNext()) {
+              var item_1 = tmp$_1.next();
               destination_1.add_11rb$(toPosixPath(item_1));
             }
 
@@ -453,32 +449,49 @@
           case 7:
             var signResult = this.local$destination;
             info($module$chalk.green('Successfully signed ' + this.local$sourceFilesCount + ' files.' + '\n'));
-            if ((tmp$_0 = (tmp$ = singleOrNull(signResult)) != null ? tmp$.second : null) != null) {
-              setOutput('signedFile', tmp$_0);
-              exportVariable('ANDROID_SIGNED_FILE', tmp$_0);
+            var destination_2 = ArrayList_init(collectionSizeOrDefault(signResult, 10));
+            var tmp$_2;
+            tmp$_2 = signResult.iterator();
+            while (tmp$_2.hasNext()) {
+              var item_2 = tmp$_2.next();
+              destination_2.add_11rb$(item_2.second);
             }
 
-            var it = joinToString(signResult, ':', void 0, void 0, void 0, void 0, mainIntl$lambda_0);
+            var destination_3 = ArrayList_init(collectionSizeOrDefault(destination_2, 10));
+            var tmp$_3;
+            tmp$_3 = destination_2.iterator();
+            while (tmp$_3.hasNext()) {
+              var item_3 = tmp$_3.next();
+              destination_3.add_11rb$($module$path.join($module$process.cwd(), this.local$inputs.releaseDir, item_3));
+            }
+
+            var tmp$_4;
+            if ((tmp$_4 = singleOrNull(destination_3)) != null) {
+              setOutput('signedFile', tmp$_4);
+              exportVariable('ANDROID_SIGNED_FILE', tmp$_4);
+            }
+
+            var it = joinToString(destination_3, ':');
             setOutput('signedFiles', it);
             exportVariable('ANDROID_SIGNED_FILES', it);
-            var it_0 = signResult.size;
+            var it_0 = destination_3.size;
             setOutput('signedFilesCount', it_0);
             exportVariable('ANDROID_SIGNED_FILES_COUNT', it_0);
-            var tmp$_4 = $module$_actions_core.summary.addHeading('Signed Release Files', 3).addRaw('Successfully signed ' + this.local$sourceFilesCount + ' files.', true);
+            var tmp$_5 = $module$_actions_core.summary.addHeading('Signed Release Files', 3).addRaw('Successfully signed ' + this.local$sourceFilesCount + ' files.' + '\n' + '\n');
             var $receiver_1 = mutableListOf([[new mainIntl$ObjectLiteral(), new mainIntl$ObjectLiteral_0(), new mainIntl$ObjectLiteral_1()]]);
-            var tmp$_5, tmp$_0_1;
+            var tmp$_6, tmp$_0_1;
             var index_0 = 0;
-            tmp$_5 = signResult.iterator();
-            while (tmp$_5.hasNext()) {
-              var item_2 = tmp$_5.next();
+            tmp$_6 = signResult.iterator();
+            while (tmp$_6.hasNext()) {
+              var item_4 = tmp$_6.next();
               var index_1 = checkIndexOverflow((tmp$_0_1 = index_0, index_0 = tmp$_0_1 + 1 | 0, tmp$_0_1));
-              var sourceFile = item_2.component1()
-              , signedFile = item_2.component2();
+              var sourceFile = item_4.component1()
+              , signedFile = item_4.component2();
               $receiver_1.add_11rb$([new mainIntl$lambda$lambda$ObjectLiteral(index_1), new mainIntl$lambda$lambda$ObjectLiteral_0(sourceFile), new mainIntl$lambda$lambda$ObjectLiteral_1(signedFile)]);
             }
 
             this.state_0 = 8;
-            this.result_0 = await_0(tmp$_4.addTable(copyToArray($receiver_1)).write(), this);
+            this.result_0 = await_0(tmp$_5.addTable(copyToArray($receiver_1)).write(), this);
             if (this.result_0 === COROUTINE_SUSPENDED)
               return COROUTINE_SUSPENDED;
             continue;
