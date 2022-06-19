@@ -26,7 +26,7 @@
   var Kind_CLASS = Kotlin.Kind.CLASS;
   var mutableListOf = Kotlin.kotlin.collections.mutableListOf_i5x0yv$;
   var exec = $module$_actions_exec.exec;
-  var ensureNotNull = Kotlin.ensureNotNull;
+  var toString = Kotlin.toString;
   var getInput = $module$_actions_core.getInput;
   var endsWith_0 = Kotlin.kotlin.text.endsWith_sgbm27$;
   var writeFileSync = $module$fs.writeFileSync;
@@ -540,7 +540,7 @@
             var $receiver_0 = this.local$inputs.keyPassword;
             if (!($receiver_0 == null || isBlank($receiver_0))) {
               $receiver.add_11rb$('--key-pass');
-              $receiver.add_11rb$(ensureNotNull(this.local$inputs.keyPassword));
+              $receiver.add_11rb$('pass:' + toString(this.local$inputs.keyPassword));
             }
 
             $receiver.add_11rb$(this.local$alignedFile);
@@ -603,7 +603,7 @@
             var $receiver_0 = this.local$inputs.keyPassword;
             if (!($receiver_0 == null || isBlank($receiver_0))) {
               $receiver.add_11rb$('-keypass');
-              $receiver.add_11rb$(ensureNotNull(this.local$inputs.keyPassword));
+              $receiver.add_11rb$('pass:' + toString(this.local$inputs.keyPassword));
             }
 
             $receiver.add_11rb$(sourceFilePath);
