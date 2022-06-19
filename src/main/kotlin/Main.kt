@@ -168,7 +168,7 @@ suspend fun signApk(sourceFile: String, inputs: ActionInputs, buildTools: BuildT
             .apply {
                 if (!inputs.keyPassword.isNullOrBlank()) {
                     add("--key-pass")
-                    add(inputs.keyPassword!!)
+                    add("pass:${inputs.keyPassword}")
                 }
 
                 add(alignedFile)
@@ -204,7 +204,7 @@ suspend fun signAab(sourceFile: String, inputs: ActionInputs, buildTools: BuildT
             .apply {
                 if (!inputs.keyPassword.isNullOrBlank()) {
                     add("-keypass")
-                    add(inputs.keyPassword!!)
+                    add("pass:${inputs.keyPassword}")
                 }
 
                 add(sourceFilePath)
