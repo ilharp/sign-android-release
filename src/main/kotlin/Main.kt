@@ -235,6 +235,7 @@ fun collectInputs(): ActionInputs {
     val signingKeyB64 = getInput("signingKey")
         .run { ifBlank { process.env["ANDROID_SIGNING_KEY"] } }
         .run { if (isNullOrBlank()) throw Exception("Cannot find signingKey/ANDROID_SIGNING_KEY. Check your input in workflow.") else this }
+        .run { trim() }
 
     // Write key to file
     val signingKey = path.join(releaseDir, "key.jks")
