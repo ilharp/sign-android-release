@@ -309,7 +309,7 @@ suspend fun collectBuildTools(inputs: ActionInputs): BuildTools {
         .apply { debug("Found apksigner: $this") }
 
     val jarsigner = which("jarsigner", false).await()
-        .run { if (!fs.existsSync(this)) throw Exception("Cannot find jarsigner. Please setup JDK this action.") else this }
+        .run { if (!fs.existsSync(this)) throw Exception("Cannot find jarsigner. Please setup JDK before this action.") else this }
         .apply { debug("Found jarsigner: $this") }
 
     return object : BuildTools {
