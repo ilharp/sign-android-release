@@ -1,0 +1,28 @@
+{
+  "version": "9",
+  "items": {
+    "91ad9de498cfa4f6c415a71b317605c0": {
+      "src": "/home/runner/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-js/1.7.0/554446425fc3e360edc626fdd1d5bbab7ec72bb5/kotlin-stdlib-js-1.7.0.jar",
+      "target": "kotlin/1.7.0"
+    },
+    "0289541566f726c115c6ac6448f2cd5b": {
+      "src": "/home/runner/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-common/1.7.0/51736992f422993a1e741051bdf3c12801bc1ca1/kotlin-stdlib-common-1.7.0.jar"
+    },
+    "9699a6a62c0236eb655904785c8c1575": {
+      "src": "/home/runner/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-nodejs/0.0.7/1fa56e94ef6a536d1c5bc44634549357ed6385cf/kotlinx-nodejs-0.0.7.jar",
+      "target": "17def1782b5ee417-kotlinx-nodejs-jsLegacy/0.0.7"
+    },
+    "139cb324ae44794c82b108f83c9ccac7": {
+      "src": "/home/runner/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-coroutines-core-js/1.6.2/460abc54d9771d9331a226d4f33a11b4c76621ae/kotlinx-coroutines-core-jslegacy-1.6.2.jar",
+      "target": "kotlinx-coroutines-core/1.6.2"
+    },
+    "29460c3e24afefe14f7d36bee7f51531": {
+      "src": "/home/runner/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/atomicfu-js/0.17.2/6612b4405d908e0fd26c2887ad26269b1c3140d1/atomicfu-jslegacy-0.17.2.jar",
+      "target": "kotlinx-atomicfu/0.17.2"
+    },
+    "895195c673d7ea83de5af201c50e8279": {
+      "src": "/home/runner/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-test-js-runner/1.7.0/c776694bcd8ec38ab942d5ca1d896ca805c9541f/kotlin-test-js-runner-1.7.0.jar",
+      "target": "kotlin-test-js-runner/1.7.0"
+    }
+  }
+}

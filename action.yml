@@ -1,0 +1,41 @@
+name: Sign Android release 2
+description: Sign APK or AAB files
+author: Il Harper
+runs:
+  using: node16
+  main: packages/sign-android-release/kotlin/sign-android-release.js
+branding:
+  icon: award
+  color: green
+inputs:
+  releaseDir:
+    description: The directory to find your release to sign
+    required: false
+    default: "" # Detect ANDROID_RELEASE_DIR
+  signingKey:
+    description: The key used to sign your release in base64 encoded format
+    required: false
+    default: "" # Detect ANDROID_SIGNING_KEY
+  keyAlias:
+    description: The key alias
+    required: false
+    default: "" # Detect ANDROID_KEY_ALIAS
+  keyStorePassword:
+    description: The password to the keystore
+    required: false
+    default: "" # Detect ANDROID_KEYSTORE_PASSWORD
+  keyPassword:
+    description: The password for the key
+    required: false
+    default: "" # Detect ANDROID_KEY_PASSWORD
+  buildToolsVersion:
+    description: The version of Android build tools to use
+    required: false
+    default: "" # Detect ANDROID_BUILD_TOOLS_VERSION
+outputs:
+  signedFile:
+    description: The signed release APK or AAB file, if single
+  signedFiles:
+    description: The signed release APK or AAB files
+  signedFilesCount:
+    description: The count of signed release files

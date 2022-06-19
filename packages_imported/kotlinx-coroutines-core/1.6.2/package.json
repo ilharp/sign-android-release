@@ -1,0 +1,11 @@
+{
+  "name": "kotlinx-coroutines-core",
+  "version": "1.6.2",
+  "customFields": {},
+  "main": "kotlinx-coroutines-core.js",
+  "devDependencies": {},
+  "dependencies": {},
+  "peerDependencies": {},
+  "optionalDependencies": {},
+  "bundledDependencies": []
+}

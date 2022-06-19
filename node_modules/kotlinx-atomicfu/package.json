@@ -1,0 +1,11 @@
+{
+  "name": "kotlinx-atomicfu",
+  "version": "0.17.2",
+  "customFields": {},
+  "main": "kotlinx-atomicfu.js",
+  "devDependencies": {},
+  "dependencies": {},
+  "peerDependencies": {},
+  "optionalDependencies": {},
+  "bundledDependencies": []
+}

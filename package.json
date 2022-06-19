@@ -1,0 +1,20 @@
+{
+  "name": "sign-android-release",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "packages/sign-android-release",
+    "packages/sign-android-release-test",
+    "packages_imported/kotlin/1.7.0",
+    "packages_imported/17def1782b5ee417-kotlinx-nodejs-jsLegacy/0.0.7",
+    "packages_imported/kotlinx-coroutines-core/1.6.2",
+    "packages_imported/kotlinx-atomicfu/0.17.2",
+    "packages_imported/kotlin-test-js-runner/1.7.0"
+  ],
+  "resolutions": {},
+  "devDependencies": {},
+  "dependencies": {},
+  "peerDependencies": {},
+  "optionalDependencies": {},
+  "bundledDependencies": []
+}
