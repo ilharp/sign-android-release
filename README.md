@@ -16,7 +16,8 @@ This action will help you sign an Android `.apk` or `.aab` (Android App Bundle) 
 Although I post this as a fork of the origin
 [r0adkll/sign-android-release](https://github.com/r0adkll/sign-android-release), this is a brand new project.
 It's written in [Kotlin/JS](https://kotlinlang.org/docs/js-overview.html)
-so Android developers can also easily read source code and maintain it without learning JavaScript/TypeScript.
+so Android developers can also easily read the source code and maintain it
+without having to learn JavaScript/TypeScript.
 
 Besides, please notice that the inputs and outputs listed below are also incompatible with the original project.
 I rearranged them to make them more consistent when forked.
