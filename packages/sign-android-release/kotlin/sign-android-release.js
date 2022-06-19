@@ -40,6 +40,8 @@
   var collectionSizeOrDefault = Kotlin.kotlin.collections.collectionSizeOrDefault_ba2ldo$;
   var copyToArray = Kotlin.kotlin.collections.copyToArray;
   var isBlank = Kotlin.kotlin.text.isBlank_gw00vp$;
+  var throwCCE = Kotlin.throwCCE;
+  var trim = Kotlin.kotlin.text.trim_gw00vp$;
   function Coroutine$main(continuation_0) {
     CoroutineImpl.call(this, continuation_0);
     this.exceptionState_0 = 4;
@@ -462,7 +464,7 @@
             var it_0 = signResult.size;
             setOutput('signedFilesCount', it_0);
             exportVariable('ANDROID_SIGNED_FILES_COUNT', it_0);
-            var tmp$_4 = $module$_actions_core.summary.addHeading('Signed Release Files').addRaw('Successfully signed ' + this.local$sourceFilesCount + ' files.', true);
+            var tmp$_4 = $module$_actions_core.summary.addHeading('Signed Release Files', 3).addRaw('Successfully signed ' + this.local$sourceFilesCount + ' files.', true);
             var $receiver_1 = mutableListOf([[new mainIntl$ObjectLiteral(), new mainIntl$ObjectLiteral_0(), new mainIntl$ObjectLiteral_1()]]);
             var tmp$_5, tmp$_0_1;
             var index_0 = 0;
@@ -711,32 +713,34 @@
     else {
       block$result = $receiver_3;
     }
-    var signingKeyB64 = block$result;
+    var $receiver_4 = block$result;
+    var tmp$_1;
+    var signingKeyB64 = trim(Kotlin.isCharSequence(tmp$_1 = $receiver_4) ? tmp$_1 : throwCCE()).toString();
     var signingKey = $module$path.join(releaseDir, 'key.jks');
     writeFileSync(signingKey, signingKeyB64, 'base64');
-    var $receiver_4 = getInput('keyAlias');
-    var $receiver_5 = isBlank($receiver_4) ? $module$process.env['ANDROID_KEY_ALIAS'] : $receiver_4;
+    var $receiver_5 = getInput('keyAlias');
+    var $receiver_6 = isBlank($receiver_5) ? $module$process.env['ANDROID_KEY_ALIAS'] : $receiver_5;
     var block$result_0;
-    if ($receiver_5 == null || isBlank($receiver_5))
+    if ($receiver_6 == null || isBlank($receiver_6))
       throw Exception_init('Cannot find keyAlias/ANDROID_KEY_ALIAS. Check your input in workflow.');
     else {
-      block$result_0 = $receiver_5;
+      block$result_0 = $receiver_6;
     }
     var keyAlias = block$result_0;
-    var $receiver_6 = getInput('keyStorePassword');
-    var $receiver_7 = isBlank($receiver_6) ? $module$process.env['ANDROID_KEYSTORE_PASSWORD'] : $receiver_6;
+    var $receiver_7 = getInput('keyStorePassword');
+    var $receiver_8 = isBlank($receiver_7) ? $module$process.env['ANDROID_KEYSTORE_PASSWORD'] : $receiver_7;
     var block$result_1;
-    if ($receiver_7 == null || isBlank($receiver_7))
+    if ($receiver_8 == null || isBlank($receiver_8))
       throw Exception_init('Cannot find keyStorePassword/ANDROID_KEYSTORE_PASSWORD. Check your input in workflow.');
     else {
-      block$result_1 = $receiver_7;
+      block$result_1 = $receiver_8;
     }
     var keyStorePassword = block$result_1;
-    var $receiver_8 = getInput('keyPassword');
-    var keyPassword = isBlank($receiver_8) ? $module$process.env['ANDROID_KEY_PASSWORD'] : $receiver_8;
-    var $receiver_9 = getInput('buildToolsVersion');
-    var $receiver_10 = isBlank($receiver_9) ? $module$process.env['ANDROID_BUILD_TOOLS_VERSION'] : $receiver_9;
-    var buildToolsVersion = $receiver_10 == null || isBlank($receiver_10) ? '29.0.3' : $receiver_10;
+    var $receiver_9 = getInput('keyPassword');
+    var keyPassword = isBlank($receiver_9) ? $module$process.env['ANDROID_KEY_PASSWORD'] : $receiver_9;
+    var $receiver_10 = getInput('buildToolsVersion');
+    var $receiver_11 = isBlank($receiver_10) ? $module$process.env['ANDROID_BUILD_TOOLS_VERSION'] : $receiver_10;
+    var buildToolsVersion = $receiver_11 == null || isBlank($receiver_11) ? '29.0.3' : $receiver_11;
     tmp$ = [signingKey, keyStorePassword, keyPassword];
     for (tmp$_0 = 0; tmp$_0 !== tmp$.length; ++tmp$_0) {
       var input = tmp$[tmp$_0];
