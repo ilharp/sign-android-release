@@ -89,7 +89,7 @@ suspend fun mainIntl() {
 
     // Write summary
     summary
-        .addHeading("Signed Release Files")
+        .addHeading("Signed Release Files", 3)
         .addRaw("Successfully signed $sourceFilesCount files.", true)
         .addTable(
             mutableListOf(
