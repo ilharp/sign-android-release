@@ -618,7 +618,7 @@
             this.local$alignedFile = dropLast(sourceFilePath, 4) + '-signed.aab';
             info($module$chalk.blue('Signing AAB file.'));
             var tmp$ = this.local$buildTools.jarsigner;
-            var $receiver = mutableListOf(['-keystore', this.local$inputs.signingKey, '-storepass', this.local$inputs.keyStorePassword]);
+            var $receiver = mutableListOf(['-keystore', this.local$inputs.signingKey, '-storepass', this.local$inputs.keyStorePassword, '-signedjar', this.local$signedFile]);
             var $receiver_0 = this.local$inputs.keyPassword;
             if (!($receiver_0 == null || isBlank($receiver_0))) {
               $receiver.add_11rb$('-keypass');
