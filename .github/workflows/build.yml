@@ -38,7 +38,7 @@ jobs:
         user_name: "Il Harper"
         user_email: "hi@ilharper.com"
         publish_branch: dist
-        publish_dir: ./build
+        publish_dir: ./build/js
         enable_jekyll: true # Not to create .nojekyll since this is not a gh page
         commit_message: "chore: publish ${{ steps.tag.outputs.version }}"
         tag_name: ${{ steps.tag.outputs.version }} # Wouldn't create if empty

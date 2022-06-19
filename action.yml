@@ -3,7 +3,7 @@ description: Sign APK or AAB files
 author: Il Harper
 runs:
   using: node16
-  main: build/js/packages/sign-android-release/kotlin/sign-android-release.js
+  main: packages/sign-android-release/kotlin/sign-android-release.js
 branding:
   icon: award
   color: green
