@@ -74,18 +74,25 @@ suspend fun mainIntl() {
     info(green("Successfully signed $sourceFilesCount files.\n"))
 
     // Set output
-    signResult.singleOrNull()?.second?.let {
-        setOutput("signedFile", it)
-        exportVariable("ANDROID_SIGNED_FILE", it)
-    }
-    signResult.joinToString(":") { it.second }.let {
-        setOutput("signedFiles", it)
-        exportVariable("ANDROID_SIGNED_FILES", it)
-    }
-    signResult.count().let {
-        setOutput("signedFilesCount", it)
-        exportVariable("ANDROID_SIGNED_FILES_COUNT", it)
-    }
+    signResult
+        .map { it.second }
+        .map { path.join(process.cwd(), inputs.releaseDir, it) }
+        .apply {
+            singleOrNull()?.let {
+                setOutput("signedFile", it)
+                exportVariable("ANDROID_SIGNED_FILE", it)
+            }
+
+            joinToString(":").let {
+                setOutput("signedFiles", it)
+                exportVariable("ANDROID_SIGNED_FILES", it)
+            }
+
+            count().let {
+                setOutput("signedFilesCount", it)
+                exportVariable("ANDROID_SIGNED_FILES_COUNT", it)
+            }
+        }
 
     // Write summary
     summary
