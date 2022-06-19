@@ -47,6 +47,7 @@ suspend fun mainIntl() {
         .glob().await()
         // Map path of files to relative
         .map { path.relative(process.cwd(), it) }
+        .map { path.relative(inputs.releaseDir, it) }
         .map { toPosixPath(it) }
         .apply {
             // Check if there's any file
