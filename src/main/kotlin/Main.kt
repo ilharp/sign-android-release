@@ -74,11 +74,11 @@ suspend fun mainIntl() {
     info(green("Successfully signed $sourceFilesCount files.\n"))
 
     // Set output
-    signResult.singleOrNull()?.let {
+    signResult.singleOrNull()?.second?.let {
         setOutput("signedFile", it)
         exportVariable("ANDROID_SIGNED_FILE", it)
     }
-    signResult.joinToString(":").let {
+    signResult.joinToString(":") { it.second }.let {
         setOutput("signedFiles", it)
         exportVariable("ANDROID_SIGNED_FILES", it)
     }
