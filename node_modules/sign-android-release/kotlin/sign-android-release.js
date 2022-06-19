@@ -872,7 +872,7 @@
             var $receiver_7 = this.result_0;
             var block$result_3;
             if (!existsSync($receiver_7))
-              throw Exception_init('Cannot find jarsigner. Please setup JDK this action.');
+              throw Exception_init('Cannot find jarsigner. Please setup JDK before this action.');
             else {
               block$result_3 = $receiver_7;
             }
