@@ -3,7 +3,10 @@ name: Build
 on:
   workflow_dispatch:
   push:
-  pull_request:
+    branches:
+    - 'master'
+    tags:
+    - 'source/v*.*.*'
 
 jobs:
   build:
