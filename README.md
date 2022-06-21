@@ -61,7 +61,7 @@ steps:
   - uses: jungwinter/split@v1
     id: signed_files
     with:
-      msg: ${{ steps.sign_app.signedFiles }}
+      msg: ${{ steps.sign_app.outputs.signedFiles }}
       separator: ':'
 
   - name: Example Release
@@ -72,11 +72,11 @@ steps:
       prerelease: true
       title: "Release X"
       files: |
-        ${{ steps.signed_files._0 }}
-        ${{ steps.signed_files._1 }}
-        ${{ steps.signed_files._2 }}
-        ${{ steps.signed_files._3 }}
-        ${{ steps.signed_files._4 }}
+        ${{ steps.signed_files.outputs._0 }}
+        ${{ steps.signed_files.outputs._1 }}
+        ${{ steps.signed_files.outputs._2 }}
+        ${{ steps.signed_files.outputs._3 }}
+        ${{ steps.signed_files.outputs._4 }}
 ```
 
 ## Inputs
