@@ -377,8 +377,8 @@
             throw this.exception_0;
           case 2:
             this.local$buildTools = this.result_0;
-            info($module$chalk.blue('Signing files in ' + dropLast(this.local$inputs.releaseDir, 1) + ' with key ' + this.local$inputs.keyAlias + '...' + '\n'));
-            var $receiver = this.local$inputs.releaseDir + '**/*.apk' + '\n' + '$' + this.local$inputs.releaseDir + '**/*.aab';
+            info($module$chalk.blue('Signing file(s) in ' + dropLast(this.local$inputs.releaseDir, 1) + ' with key ' + this.local$inputs.keyAlias + '...' + '\n'));
+            var $receiver = this.local$inputs.releaseDir + '**/*.apk' + '\n' + this.local$inputs.releaseDir + '**/*.aab';
             debug('Glob patterns:' + '\n' + $receiver);
             var globPatterns = $receiver;
             this.state_0 = 3;
@@ -421,7 +421,7 @@
               throw Exception_init('Cannot find any apk/aab file.');
             var sourceFiles = destination_1;
             this.local$sourceFilesCount = sourceFiles.size;
-            info($module$chalk.blue('Now sign ' + this.local$sourceFilesCount + ' files:') + '\n' + joinToString(sourceFiles, '\n', void 0, void 0, void 0, void 0, mainIntl$lambda) + '\n');
+            info($module$chalk.blue('Now sign ' + this.local$sourceFilesCount + ' file(s):') + '\n' + joinToString(sourceFiles, '\n', void 0, void 0, void 0, void 0, mainIntl$lambda) + '\n');
             this.local$destination = ArrayList_init(collectionSizeOrDefault(sourceFiles, 10));
             var tmp$_0_0;
             this.local$index = 0;
@@ -449,7 +449,7 @@
             continue;
           case 7:
             var signResult = this.local$destination;
-            info($module$chalk.green('Successfully signed ' + this.local$sourceFilesCount + ' files.' + '\n'));
+            info($module$chalk.green('Successfully signed ' + this.local$sourceFilesCount + ' file(s).' + '\n'));
             var destination_2 = ArrayList_init(collectionSizeOrDefault(signResult, 10));
             var tmp$_2;
             tmp$_2 = signResult.iterator();
@@ -478,7 +478,7 @@
             var it_0 = destination_3.size;
             setOutput('signedFilesCount', it_0);
             exportVariable('ANDROID_SIGNED_FILES_COUNT', it_0);
-            var tmp$_5 = $module$_actions_core.summary.addHeading('Signed Release Files', 3).addRaw('Successfully signed ' + this.local$sourceFilesCount + ' files.' + '\n' + '\n');
+            var tmp$_5 = $module$_actions_core.summary.addHeading('Signed Release Files', 3).addRaw('Successfully signed ' + this.local$sourceFilesCount + ' file(s).' + '\n' + '\n');
             var $receiver_1 = mutableListOf([[new mainIntl$ObjectLiteral(), new mainIntl$ObjectLiteral_0(), new mainIntl$ObjectLiteral_1()]]);
             var tmp$_6, tmp$_0_1;
             var index_0 = 0;
