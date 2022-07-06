@@ -15,8 +15,8 @@ import actions.core.summary
 import actions.core.toPosixPath
 import actions.exec.exec
 import actions.io.which
-import chalk.blue
-import chalk.green
+import chalk.Chalk
+import chalk.Options
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.await
@@ -33,11 +33,15 @@ suspend fun main() = try {
 }
 
 suspend fun mainIntl() {
+    // Create chalk instance
+    val chalk = Chalk(object : Options {
+        override var level: Any? = 1
+    })
     // Collect variables
     val inputs = collectInputs()
     val buildTools = collectBuildTools(inputs)
 
-    info(blue("Signing file(s) in ${inputs.releaseDir.dropLast(1)} with key ${inputs.keyAlias}...\n"))
+    info(chalk.blue("Signing file(s) in ${inputs.releaseDir.dropLast(1)} with key ${inputs.keyAlias}...\n"))
 
     // Find release files
     val globPatterns = "${inputs.releaseDir}**/*.apk\n${inputs.releaseDir}**/*.aab"
@@ -55,23 +59,29 @@ suspend fun mainIntl() {
         }
     val sourceFilesCount = sourceFiles.count()
 
-    info("${blue("Now sign $sourceFilesCount file(s):")}\n${sourceFiles.joinToString("\n", transform = { "- $it" })}\n")
+    info(
+        "${chalk.blue("Now sign $sourceFilesCount file(s):")}\n${
+            sourceFiles.joinToString(
+                "\n",
+                transform = { "- $it" })
+        }\n"
+    )
 
     // Sign files
     val signResult = sourceFiles.mapIndexed { index, sourceFile ->
         var signedFile = ""
         group("[${index + 1}/$sourceFilesCount] $sourceFile") {
             if (sourceFile.endsWith(".apk")) GlobalScope.promise {
-                signedFile = signApk(sourceFile, inputs, buildTools)
+                signedFile = signApk(chalk, sourceFile, inputs, buildTools)
             }
             else GlobalScope.promise {
-                signedFile = signAab(sourceFile, inputs, buildTools)
+                signedFile = signAab(chalk, sourceFile, inputs, buildTools)
             }
         }.await()
         Pair(sourceFile, signedFile)
     }
 
-    info(green("Successfully signed $sourceFilesCount file(s).\n"))
+    info(chalk.green("Successfully signed $sourceFilesCount file(s).\n"))
 
     // Set output
     signResult
@@ -147,18 +157,23 @@ suspend fun mainIntl() {
  *
  * See also: [Build your app from the command line](https://developer.android.com/studio/build/building-cmdline#sign_manually)
  */
-suspend fun signApk(sourceFile: String, inputs: ActionInputs, buildTools: BuildTools): String {
+suspend fun signApk(
+    chalk: Chalk,
+    sourceFile: String,
+    inputs: ActionInputs,
+    buildTools: BuildTools
+): String {
     val sourceFilePath = inputs.releaseDir + sourceFile
     val alignedFile = sourceFilePath.dropLast(4) + "-temp.apk"
     val signedFile = sourceFilePath.dropLast(4) + "-signed.apk"
 
-    info(blue("Aligning APK file."))
+    info(chalk.blue("Aligning APK file."))
     exec(
         buildTools.zipalign,
         arrayOf("-p", "-f", "-v", "4", sourceFilePath, alignedFile)
     ).await()
 
-    info(blue("Signing APK file."))
+    info(chalk.blue("Signing APK file."))
     exec(
         buildTools.apksigner,
         mutableListOf(
@@ -194,12 +209,17 @@ suspend fun signApk(sourceFile: String, inputs: ActionInputs, buildTools: BuildT
  *
  * See also: [zipalign](https://developer.android.com/studio/command-line/zipalign)
  */
-suspend fun signAab(sourceFile: String, inputs: ActionInputs, buildTools: BuildTools): String {
+suspend fun signAab(
+    chalk: Chalk,
+    sourceFile: String,
+    inputs: ActionInputs,
+    buildTools: BuildTools
+): String {
     val sourceFilePath = inputs.releaseDir + sourceFile
     val signedFile = sourceFilePath.dropLast(4) + "-temp.aab"
     val alignedFile = sourceFilePath.dropLast(4) + "-signed.aab"
 
-    info(blue("Signing AAB file."))
+    info(chalk.blue("Signing AAB file."))
     exec(
         buildTools.jarsigner,
         mutableListOf(
@@ -222,7 +242,7 @@ suspend fun signAab(sourceFile: String, inputs: ActionInputs, buildTools: BuildT
             .toTypedArray()
     ).await()
 
-    info(blue("Aligning AAB file."))
+    info(chalk.blue("Aligning AAB file."))
     exec(
         buildTools.zipalign,
         arrayOf("-p", "-f", "-v", "4", signedFile, alignedFile)
