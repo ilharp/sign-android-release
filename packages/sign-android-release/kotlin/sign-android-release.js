@@ -6,6 +6,8 @@
   var error = $module$_actions_core.error;
   var setFailed = $module$_actions_core.setFailed;
   var Unit = Kotlin.kotlin.Unit;
+  var Kind_CLASS = Kotlin.Kind.CLASS;
+  var Chalk = $module$chalk.Chalk;
   var dropLast = Kotlin.kotlin.text.dropLast_6ic1pp$;
   var info = $module$_actions_core.info;
   var debug = $module$_actions_core.debug;
@@ -23,7 +25,6 @@
   var singleOrNull = Kotlin.kotlin.collections.singleOrNull_2p1efm$;
   var setOutput = $module$_actions_core.setOutput;
   var exportVariable = $module$_actions_core.exportVariable;
-  var Kind_CLASS = Kotlin.Kind.CLASS;
   var mutableListOf = Kotlin.kotlin.collections.mutableListOf_i5x0yv$;
   var exec = $module$_actions_exec.exec;
   var toString = Kotlin.toString;
@@ -100,13 +101,30 @@
     else
       return instance.doResume(null);
   }
+  function mainIntl$ObjectLiteral() {
+    this.level_paoiw3$_0 = 1;
+  }
+  Object.defineProperty(mainIntl$ObjectLiteral.prototype, 'level', {
+    configurable: true,
+    get: function () {
+      return this.level_paoiw3$_0;
+    },
+    set: function (level) {
+      this.level_paoiw3$_0 = level;
+    }
+  });
+  mainIntl$ObjectLiteral.$metadata$ = {
+    kind: Kind_CLASS,
+    interfaces: []
+  };
   function mainIntl$lambda(it) {
     return '- ' + it;
   }
-  function Coroutine$mainIntl$lambda$lambda$lambda(closure$sourceFile_0, closure$inputs_0, closure$buildTools_0, closure$signedFile_0, $receiver_0, controller, continuation_0) {
+  function Coroutine$mainIntl$lambda$lambda$lambda(closure$chalk_0, closure$sourceFile_0, closure$inputs_0, closure$buildTools_0, closure$signedFile_0, $receiver_0, controller, continuation_0) {
     CoroutineImpl.call(this, continuation_0);
     this.$controller = controller;
     this.exceptionState_0 = 1;
+    this.local$closure$chalk = closure$chalk_0;
     this.local$closure$sourceFile = closure$sourceFile_0;
     this.local$closure$inputs = closure$inputs_0;
     this.local$closure$buildTools = closure$buildTools_0;
@@ -125,7 +143,7 @@
         switch (this.state_0) {
           case 0:
             this.state_0 = 2;
-            this.result_0 = signApk(this.local$closure$sourceFile, this.local$closure$inputs, this.local$closure$buildTools, this);
+            this.result_0 = signApk(this.local$closure$chalk, this.local$closure$sourceFile, this.local$closure$inputs, this.local$closure$buildTools, this);
             if (this.result_0 === COROUTINE_SUSPENDED)
               return COROUTINE_SUSPENDED;
             continue;
@@ -148,19 +166,20 @@
       }
      while (true);
   };
-  function mainIntl$lambda$lambda$lambda(closure$sourceFile_0, closure$inputs_0, closure$buildTools_0, closure$signedFile_0) {
+  function mainIntl$lambda$lambda$lambda(closure$chalk_0, closure$sourceFile_0, closure$inputs_0, closure$buildTools_0, closure$signedFile_0) {
     return function ($receiver_0, continuation_0, suspended) {
-      var instance = new Coroutine$mainIntl$lambda$lambda$lambda(closure$sourceFile_0, closure$inputs_0, closure$buildTools_0, closure$signedFile_0, $receiver_0, this, continuation_0);
+      var instance = new Coroutine$mainIntl$lambda$lambda$lambda(closure$chalk_0, closure$sourceFile_0, closure$inputs_0, closure$buildTools_0, closure$signedFile_0, $receiver_0, this, continuation_0);
       if (suspended)
         return instance;
       else
         return instance.doResume(null);
     };
   }
-  function Coroutine$mainIntl$lambda$lambda$lambda_0(closure$sourceFile_0, closure$inputs_0, closure$buildTools_0, closure$signedFile_0, $receiver_0, controller, continuation_0) {
+  function Coroutine$mainIntl$lambda$lambda$lambda_0(closure$chalk_0, closure$sourceFile_0, closure$inputs_0, closure$buildTools_0, closure$signedFile_0, $receiver_0, controller, continuation_0) {
     CoroutineImpl.call(this, continuation_0);
     this.$controller = controller;
     this.exceptionState_0 = 1;
+    this.local$closure$chalk = closure$chalk_0;
     this.local$closure$sourceFile = closure$sourceFile_0;
     this.local$closure$inputs = closure$inputs_0;
     this.local$closure$buildTools = closure$buildTools_0;
@@ -179,7 +198,7 @@
         switch (this.state_0) {
           case 0:
             this.state_0 = 2;
-            this.result_0 = signAab(this.local$closure$sourceFile, this.local$closure$inputs, this.local$closure$buildTools, this);
+            this.result_0 = signAab(this.local$closure$chalk, this.local$closure$sourceFile, this.local$closure$inputs, this.local$closure$buildTools, this);
             if (this.result_0 === COROUTINE_SUSPENDED)
               return COROUTINE_SUSPENDED;
             continue;
@@ -202,48 +221,22 @@
       }
      while (true);
   };
-  function mainIntl$lambda$lambda$lambda_0(closure$sourceFile_0, closure$inputs_0, closure$buildTools_0, closure$signedFile_0) {
+  function mainIntl$lambda$lambda$lambda_0(closure$chalk_0, closure$sourceFile_0, closure$inputs_0, closure$buildTools_0, closure$signedFile_0) {
     return function ($receiver_0, continuation_0, suspended) {
-      var instance = new Coroutine$mainIntl$lambda$lambda$lambda_0(closure$sourceFile_0, closure$inputs_0, closure$buildTools_0, closure$signedFile_0, $receiver_0, this, continuation_0);
+      var instance = new Coroutine$mainIntl$lambda$lambda$lambda_0(closure$chalk_0, closure$sourceFile_0, closure$inputs_0, closure$buildTools_0, closure$signedFile_0, $receiver_0, this, continuation_0);
       if (suspended)
         return instance;
       else
         return instance.doResume(null);
     };
   }
-  function mainIntl$lambda$lambda(closure$sourceFile, closure$inputs, closure$buildTools, closure$signedFile) {
+  function mainIntl$lambda$lambda(closure$sourceFile, closure$chalk, closure$inputs, closure$buildTools, closure$signedFile) {
     return function () {
-      return endsWith(closure$sourceFile, '.apk') ? promise(coroutines.GlobalScope, void 0, void 0, mainIntl$lambda$lambda$lambda(closure$sourceFile, closure$inputs, closure$buildTools, closure$signedFile)) : promise(coroutines.GlobalScope, void 0, void 0, mainIntl$lambda$lambda$lambda_0(closure$sourceFile, closure$inputs, closure$buildTools, closure$signedFile));
+      return endsWith(closure$sourceFile, '.apk') ? promise(coroutines.GlobalScope, void 0, void 0, mainIntl$lambda$lambda$lambda(closure$chalk, closure$sourceFile, closure$inputs, closure$buildTools, closure$signedFile)) : promise(coroutines.GlobalScope, void 0, void 0, mainIntl$lambda$lambda$lambda_0(closure$chalk, closure$sourceFile, closure$inputs, closure$buildTools, closure$signedFile));
     };
   }
-  function mainIntl$ObjectLiteral() {
-    this.data_s6r7pf$_0 = 'Index';
-    this.header_euu5q8$_0 = true;
-  }
-  Object.defineProperty(mainIntl$ObjectLiteral.prototype, 'data', {
-    configurable: true,
-    get: function () {
-      return this.data_s6r7pf$_0;
-    },
-    set: function (data) {
-      this.data_s6r7pf$_0 = data;
-    }
-  });
-  Object.defineProperty(mainIntl$ObjectLiteral.prototype, 'header', {
-    configurable: true,
-    get: function () {
-      return this.header_euu5q8$_0;
-    },
-    set: function (header) {
-      this.header_euu5q8$_0 = header;
-    }
-  });
-  mainIntl$ObjectLiteral.$metadata$ = {
-    kind: Kind_CLASS,
-    interfaces: []
-  };
   function mainIntl$ObjectLiteral_0() {
-    this.data_s6r7pf$_0 = 'Source File';
+    this.data_s6r7pf$_0 = 'Index';
     this.header_euu5q8$_0 = true;
   }
   Object.defineProperty(mainIntl$ObjectLiteral_0.prototype, 'data', {
@@ -269,7 +262,7 @@
     interfaces: []
   };
   function mainIntl$ObjectLiteral_1() {
-    this.data_s6r7pf$_0 = 'Signed File';
+    this.data_s6r7pf$_0 = 'Source File';
     this.header_euu5q8$_0 = true;
   }
   Object.defineProperty(mainIntl$ObjectLiteral_1.prototype, 'data', {
@@ -291,6 +284,32 @@
     }
   });
   mainIntl$ObjectLiteral_1.$metadata$ = {
+    kind: Kind_CLASS,
+    interfaces: []
+  };
+  function mainIntl$ObjectLiteral_2() {
+    this.data_s6r7pf$_0 = 'Signed File';
+    this.header_euu5q8$_0 = true;
+  }
+  Object.defineProperty(mainIntl$ObjectLiteral_2.prototype, 'data', {
+    configurable: true,
+    get: function () {
+      return this.data_s6r7pf$_0;
+    },
+    set: function (data) {
+      this.data_s6r7pf$_0 = data;
+    }
+  });
+  Object.defineProperty(mainIntl$ObjectLiteral_2.prototype, 'header', {
+    configurable: true,
+    get: function () {
+      return this.header_euu5q8$_0;
+    },
+    set: function (header) {
+      this.header_euu5q8$_0 = header;
+    }
+  });
+  mainIntl$ObjectLiteral_2.$metadata$ = {
     kind: Kind_CLASS,
     interfaces: []
   };
@@ -345,6 +364,7 @@
   function Coroutine$mainIntl(continuation_0) {
     CoroutineImpl.call(this, continuation_0);
     this.exceptionState_0 = 1;
+    this.local$chalk = void 0;
     this.local$inputs = void 0;
     this.local$buildTools = void 0;
     this.local$sourceFilesCount = void 0;
@@ -367,6 +387,7 @@
       try {
         switch (this.state_0) {
           case 0:
+            this.local$chalk = new Chalk(new mainIntl$ObjectLiteral());
             this.local$inputs = collectInputs();
             this.state_0 = 2;
             this.result_0 = collectBuildTools(this.local$inputs, this);
@@ -377,7 +398,7 @@
             throw this.exception_0;
           case 2:
             this.local$buildTools = this.result_0;
-            info($module$chalk.blue('Signing file(s) in ' + dropLast(this.local$inputs.releaseDir, 1) + ' with key ' + this.local$inputs.keyAlias + '...' + '\n'));
+            info(this.local$chalk.blue('Signing file(s) in ' + dropLast(this.local$inputs.releaseDir, 1) + ' with key ' + this.local$inputs.keyAlias + '...' + '\n'));
             var $receiver = this.local$inputs.releaseDir + '**/*.apk' + '\n' + this.local$inputs.releaseDir + '**/*.aab';
             debug('Glob patterns:' + '\n' + $receiver);
             var globPatterns = $receiver;
@@ -421,7 +442,7 @@
               throw Exception_init('Cannot find any apk/aab file.');
             var sourceFiles = destination_1;
             this.local$sourceFilesCount = sourceFiles.size;
-            info($module$chalk.blue('Now sign ' + this.local$sourceFilesCount + ' file(s):') + '\n' + joinToString(sourceFiles, '\n', void 0, void 0, void 0, void 0, mainIntl$lambda) + '\n');
+            info(this.local$chalk.blue('Now sign ' + this.local$sourceFilesCount + ' file(s):') + '\n' + joinToString(sourceFiles, '\n', void 0, void 0, void 0, void 0, mainIntl$lambda) + '\n');
             this.local$destination = ArrayList_init(collectionSizeOrDefault(sourceFiles, 10));
             var tmp$_0_0;
             this.local$index = 0;
@@ -439,7 +460,7 @@
             var index = checkIndexOverflow((tmp$_0_0 = this.local$index, this.local$index = tmp$_0_0 + 1 | 0, tmp$_0_0));
             this.local$signedFile = {v: ''};
             this.state_0 = 6;
-            this.result_0 = await_0(group('[' + (index + 1 | 0) + '/' + this.local$sourceFilesCount + '] ' + this.local$item, mainIntl$lambda$lambda(this.local$item, this.local$inputs, this.local$buildTools, this.local$signedFile)), this);
+            this.result_0 = await_0(group('[' + (index + 1 | 0) + '/' + this.local$sourceFilesCount + '] ' + this.local$item, mainIntl$lambda$lambda(this.local$item, this.local$chalk, this.local$inputs, this.local$buildTools, this.local$signedFile)), this);
             if (this.result_0 === COROUTINE_SUSPENDED)
               return COROUTINE_SUSPENDED;
             continue;
@@ -449,7 +470,7 @@
             continue;
           case 7:
             var signResult = this.local$destination;
-            info($module$chalk.green('Successfully signed ' + this.local$sourceFilesCount + ' file(s).' + '\n'));
+            info(this.local$chalk.green('Successfully signed ' + this.local$sourceFilesCount + ' file(s).' + '\n'));
             var destination_2 = ArrayList_init(collectionSizeOrDefault(signResult, 10));
             var tmp$_2;
             tmp$_2 = signResult.iterator();
@@ -479,7 +500,7 @@
             setOutput('signedFilesCount', it_0);
             exportVariable('ANDROID_SIGNED_FILES_COUNT', it_0);
             var tmp$_5 = $module$_actions_core.summary.addHeading('Signed Release Files', 3).addRaw('Successfully signed ' + this.local$sourceFilesCount + ' file(s).' + '\n' + '\n');
-            var $receiver_1 = mutableListOf([[new mainIntl$ObjectLiteral(), new mainIntl$ObjectLiteral_0(), new mainIntl$ObjectLiteral_1()]]);
+            var $receiver_1 = mutableListOf([[new mainIntl$ObjectLiteral_0(), new mainIntl$ObjectLiteral_1(), new mainIntl$ObjectLiteral_2()]]);
             var tmp$_6, tmp$_0_1;
             var index_0 = 0;
             tmp$_6 = signResult.iterator();
@@ -520,11 +541,12 @@
     else
       return instance.doResume(null);
   }
-  function Coroutine$signApk(sourceFile_0, inputs_0, buildTools_0, continuation_0) {
+  function Coroutine$signApk(chalk_0, sourceFile_0, inputs_0, buildTools_0, continuation_0) {
     CoroutineImpl.call(this, continuation_0);
     this.exceptionState_0 = 1;
     this.local$alignedFile = void 0;
     this.local$signedFile = void 0;
+    this.local$chalk = chalk_0;
     this.local$sourceFile = sourceFile_0;
     this.local$inputs = inputs_0;
     this.local$buildTools = buildTools_0;
@@ -544,7 +566,7 @@
             var sourceFilePath = this.local$inputs.releaseDir + this.local$sourceFile;
             this.local$alignedFile = dropLast(sourceFilePath, 4) + '-temp.apk';
             this.local$signedFile = dropLast(sourceFilePath, 4) + '-signed.apk';
-            info($module$chalk.blue('Aligning APK file.'));
+            info(this.local$chalk.blue('Aligning APK file.'));
             this.state_0 = 2;
             this.result_0 = await_0(exec(this.local$buildTools.zipalign, ['-p', '-f', '-v', '4', sourceFilePath, this.local$alignedFile]), this);
             if (this.result_0 === COROUTINE_SUSPENDED)
@@ -553,7 +575,7 @@
           case 1:
             throw this.exception_0;
           case 2:
-            info($module$chalk.blue('Signing APK file.'));
+            info(this.local$chalk.blue('Signing APK file.'));
             var tmp$ = this.local$buildTools.apksigner;
             var $receiver = mutableListOf(['sign', '--ks', this.local$inputs.signingKey, '--ks-key-alias', this.local$inputs.keyAlias, '--ks-pass', 'pass:' + this.local$inputs.keyStorePassword, '--out', this.local$signedFile]);
             var $receiver_0 = this.local$inputs.keyPassword;
@@ -585,18 +607,19 @@
       }
      while (true);
   };
-  function signApk(sourceFile_0, inputs_0, buildTools_0, continuation_0, suspended) {
-    var instance = new Coroutine$signApk(sourceFile_0, inputs_0, buildTools_0, continuation_0);
+  function signApk(chalk_0, sourceFile_0, inputs_0, buildTools_0, continuation_0, suspended) {
+    var instance = new Coroutine$signApk(chalk_0, sourceFile_0, inputs_0, buildTools_0, continuation_0);
     if (suspended)
       return instance;
     else
       return instance.doResume(null);
   }
-  function Coroutine$signAab(sourceFile_0, inputs_0, buildTools_0, continuation_0) {
+  function Coroutine$signAab(chalk_0, sourceFile_0, inputs_0, buildTools_0, continuation_0) {
     CoroutineImpl.call(this, continuation_0);
     this.exceptionState_0 = 1;
     this.local$signedFile = void 0;
     this.local$alignedFile = void 0;
+    this.local$chalk = chalk_0;
     this.local$sourceFile = sourceFile_0;
     this.local$inputs = inputs_0;
     this.local$buildTools = buildTools_0;
@@ -616,7 +639,7 @@
             var sourceFilePath = this.local$inputs.releaseDir + this.local$sourceFile;
             this.local$signedFile = dropLast(sourceFilePath, 4) + '-temp.aab';
             this.local$alignedFile = dropLast(sourceFilePath, 4) + '-signed.aab';
-            info($module$chalk.blue('Signing AAB file.'));
+            info(this.local$chalk.blue('Signing AAB file.'));
             var tmp$ = this.local$buildTools.jarsigner;
             var $receiver = mutableListOf(['-keystore', this.local$inputs.signingKey, '-storepass', this.local$inputs.keyStorePassword, '-signedjar', this.local$signedFile]);
             var $receiver_0 = this.local$inputs.keyPassword;
@@ -635,7 +658,7 @@
           case 1:
             throw this.exception_0;
           case 2:
-            info($module$chalk.blue('Aligning AAB file.'));
+            info(this.local$chalk.blue('Aligning AAB file.'));
             this.state_0 = 3;
             this.result_0 = await_0(exec(this.local$buildTools.zipalign, ['-p', '-f', '-v', '4', this.local$signedFile, this.local$alignedFile]), this);
             if (this.result_0 === COROUTINE_SUSPENDED)
@@ -658,8 +681,8 @@
       }
      while (true);
   };
-  function signAab(sourceFile_0, inputs_0, buildTools_0, continuation_0, suspended) {
-    var instance = new Coroutine$signAab(sourceFile_0, inputs_0, buildTools_0, continuation_0);
+  function signAab(chalk_0, sourceFile_0, inputs_0, buildTools_0, continuation_0, suspended) {
+    var instance = new Coroutine$signAab(chalk_0, sourceFile_0, inputs_0, buildTools_0, continuation_0);
     if (suspended)
       return instance;
     else
@@ -912,8 +935,8 @@
   };
   _.main = main;
   _.mainIntl = mainIntl;
-  _.signApk_2cvpd8$ = signApk;
-  _.signAab_2cvpd8$ = signAab;
+  _.signApk_xorv2w$ = signApk;
+  _.signAab_xorv2w$ = signAab;
   $$importsForInline$$['17def1782b5ee417-kotlinx-nodejs-jsLegacy'] = $module$_17def1782b5ee417_kotlinx_nodejs_jsLegacy;
   _.collectInputs = collectInputs;
   _.ActionInputs = ActionInputs;
