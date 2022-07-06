@@ -7,7 +7,7 @@
   var setFailed = $module$_actions_core.setFailed;
   var Unit = Kotlin.kotlin.Unit;
   var Kind_CLASS = Kotlin.Kind.CLASS;
-  var Chalk = $module$chalk.Chalk;
+  var Instance = $module$chalk.Instance;
   var dropLast = Kotlin.kotlin.text.dropLast_6ic1pp$;
   var info = $module$_actions_core.info;
   var debug = $module$_actions_core.debug;
@@ -387,7 +387,7 @@
       try {
         switch (this.state_0) {
           case 0:
-            this.local$chalk = new Chalk(new mainIntl$ObjectLiteral());
+            this.local$chalk = new Instance(new mainIntl$ObjectLiteral());
             this.local$inputs = collectInputs();
             this.state_0 = 2;
             this.result_0 = collectBuildTools(this.local$inputs, this);
@@ -935,8 +935,8 @@
   };
   _.main = main;
   _.mainIntl = mainIntl;
-  _.signApk_xorv2w$ = signApk;
-  _.signAab_xorv2w$ = signAab;
+  _.signApk_vbqj4o$ = signApk;
+  _.signAab_vbqj4o$ = signAab;
   $$importsForInline$$['17def1782b5ee417-kotlinx-nodejs-jsLegacy'] = $module$_17def1782b5ee417_kotlinx_nodejs_jsLegacy;
   _.collectInputs = collectInputs;
   _.ActionInputs = ActionInputs;
