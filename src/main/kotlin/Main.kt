@@ -61,9 +61,10 @@ suspend fun mainIntl() {
 
     info(
         "${chalk.blue("Now sign $sourceFilesCount file(s):")}\n${
-            sourceFiles.joinToString(
-                "\n",
-                transform = { "- $it" })
+        sourceFiles.joinToString(
+            "\n",
+            transform = { "- $it" }
+        )
         }\n"
     )
 
