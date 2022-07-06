@@ -37,7 +37,7 @@ suspend fun mainIntl() {
     val inputs = collectInputs()
     val buildTools = collectBuildTools(inputs)
 
-    info(blue("Signing files in ${inputs.releaseDir.dropLast(1)} with key ${inputs.keyAlias}...\n"))
+    info(blue("Signing file(s) in ${inputs.releaseDir.dropLast(1)} with key ${inputs.keyAlias}...\n"))
 
     // Find release files
     val globPatterns = "${inputs.releaseDir}**/*.apk\n${inputs.releaseDir}**/*.aab"
@@ -55,7 +55,7 @@ suspend fun mainIntl() {
         }
     val sourceFilesCount = sourceFiles.count()
 
-    info("${blue("Now sign $sourceFilesCount files:")}\n${sourceFiles.joinToString("\n", transform = { "- $it" })}\n")
+    info("${blue("Now sign $sourceFilesCount file(s):")}\n${sourceFiles.joinToString("\n", transform = { "- $it" })}\n")
 
     // Sign files
     val signResult = sourceFiles.mapIndexed { index, sourceFile ->
@@ -71,7 +71,7 @@ suspend fun mainIntl() {
         Pair(sourceFile, signedFile)
     }
 
-    info(green("Successfully signed $sourceFilesCount files.\n"))
+    info(green("Successfully signed $sourceFilesCount file(s).\n"))
 
     // Set output
     signResult
@@ -97,7 +97,7 @@ suspend fun mainIntl() {
     // Write summary
     summary
         .addHeading("Signed Release Files", 3)
-        .addRaw("Successfully signed $sourceFilesCount files.\n\n")
+        .addRaw("Successfully signed $sourceFilesCount file(s).\n\n")
         .addTable(
             mutableListOf(
                 arrayOf(
