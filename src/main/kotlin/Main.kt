@@ -40,7 +40,7 @@ suspend fun mainIntl() {
     info(blue("Signing files in ${inputs.releaseDir.dropLast(1)} with key ${inputs.keyAlias}...\n"))
 
     // Find release files
-    val globPatterns = "${inputs.releaseDir}**/*.apk\n$${inputs.releaseDir}**/*.aab"
+    val globPatterns = "${inputs.releaseDir}**/*.apk\n${inputs.releaseDir}**/*.aab"
         .apply { debug("Glob patterns:\n$this") }
     // Use @action/glob to glob files
     val sourceFiles = actions.glob.create(globPatterns).await()
