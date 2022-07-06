@@ -15,7 +15,7 @@ import actions.core.summary
 import actions.core.toPosixPath
 import actions.exec.exec
 import actions.io.which
-import chalk.Chalk
+import chalk.Instance
 import chalk.Options
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
@@ -34,7 +34,7 @@ suspend fun main() = try {
 
 suspend fun mainIntl() {
     // Create chalk instance
-    val chalk = Chalk(object : Options {
+    val chalk = Instance(object : Options {
         override var level: Any? = 1
     })
     // Collect variables
@@ -159,7 +159,7 @@ suspend fun mainIntl() {
  * See also: [Build your app from the command line](https://developer.android.com/studio/build/building-cmdline#sign_manually)
  */
 suspend fun signApk(
-    chalk: Chalk,
+    chalk: Instance,
     sourceFile: String,
     inputs: ActionInputs,
     buildTools: BuildTools
@@ -211,7 +211,7 @@ suspend fun signApk(
  * See also: [zipalign](https://developer.android.com/studio/command-line/zipalign)
  */
 suspend fun signAab(
-    chalk: Chalk,
+    chalk: Instance,
     sourceFile: String,
     inputs: ActionInputs,
     buildTools: BuildTools
