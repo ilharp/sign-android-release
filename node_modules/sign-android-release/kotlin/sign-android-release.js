@@ -34,6 +34,7 @@
   var writeFileSync = $module$fs.writeFileSync;
   var setSecret = $module$_actions_core.setSecret;
   var Kind_INTERFACE = Kotlin.Kind.INTERFACE;
+  var equals = Kotlin.equals;
   var existsSync = $module$fs.existsSync;
   var which = $module$_actions_io.which;
   var internal = Kotlin.kotlin.coroutines.js.internal;
@@ -840,6 +841,7 @@
       try {
         switch (this.state_0) {
           case 0:
+            var isWin = equals($module$process.platform, 'win32');
             var $receiver = $module$process.env['ANDROID_HOME'];
             var block$result;
             if ($receiver == null || isBlank($receiver))
@@ -862,7 +864,7 @@
             var $receiver_2 = block$result_0;
             debug('Found Android build-tools: ' + $receiver_2);
             var buildTools = $receiver_2;
-            var $receiver_3 = $module$path.join(buildTools, 'zipalign');
+            var $receiver_3 = $module$path.join(buildTools, isWin ? 'zipalign.exe' : 'zipalign');
             var block$result_1;
             if (!existsSync($receiver_3))
               throw Exception_init('Cannot find zipalign. Please setup Android before this action.');
@@ -873,7 +875,7 @@
             var $receiver_4 = block$result_1;
             debug('Found zipalign: ' + $receiver_4);
             this.local$zipalign = $receiver_4;
-            var $receiver_5 = $module$path.join(buildTools, 'apksigner');
+            var $receiver_5 = $module$path.join(buildTools, isWin ? 'apksigner.exe' : 'apksigner');
             var block$result_2;
             if (!existsSync($receiver_5))
               throw Exception_init('Cannot find apksigner. Please setup Android before this action.');
@@ -885,7 +887,7 @@
             debug('Found apksigner: ' + $receiver_6);
             this.local$apksigner = $receiver_6;
             this.state_0 = 2;
-            this.result_0 = await_0(which('jarsigner', false), this);
+            this.result_0 = await_0(which(isWin ? 'jarsigner.exe' : 'jarsigner', false), this);
             if (this.result_0 === COROUTINE_SUSPENDED)
               return COROUTINE_SUSPENDED;
             continue;
