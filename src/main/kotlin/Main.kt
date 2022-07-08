@@ -313,6 +313,8 @@ interface ActionInputs {
 }
 
 suspend fun collectBuildTools(inputs: ActionInputs): BuildTools {
+    val isWin = process.platform == "win32"
+
     val androidHome = process.env["ANDROID_HOME"]
         .run { if (isNullOrBlank()) throw Exception("Cannot find Android SDK installation. Please setup Android before this action.") else this }
         .apply { debug("Found Android SDK: $this") }
@@ -321,15 +323,15 @@ suspend fun collectBuildTools(inputs: ActionInputs): BuildTools {
         .run { if (!fs.existsSync(this)) throw Exception("Cannot find Android build tools. Please setup Android before this action.") else this }
         .apply { debug("Found Android build-tools: $this") }
 
-    val zipalign = path.join(buildTools, "zipalign")
+    val zipalign = path.join(buildTools, if (isWin) "zipalign.exe" else "zipalign")
         .run { if (!fs.existsSync(this)) throw Exception("Cannot find zipalign. Please setup Android before this action.") else this }
         .apply { debug("Found zipalign: $this") }
 
-    val apksigner = path.join(buildTools, "apksigner")
+    val apksigner = path.join(buildTools, if (isWin) "apksigner.exe" else "apksigner")
         .run { if (!fs.existsSync(this)) throw Exception("Cannot find apksigner. Please setup Android before this action.") else this }
         .apply { debug("Found apksigner: $this") }
 
-    val jarsigner = which("jarsigner", false).await()
+    val jarsigner = which(if (isWin) "jarsigner.exe" else "jarsigner", false).await()
         .run { if (!fs.existsSync(this)) throw Exception("Cannot find jarsigner. Please setup JDK before this action.") else this }
         .apply { debug("Found jarsigner: $this") }
 
