@@ -875,7 +875,7 @@
             var $receiver_4 = block$result_1;
             debug('Found zipalign: ' + $receiver_4);
             this.local$zipalign = $receiver_4;
-            var $receiver_5 = $module$path.join(buildTools, isWin ? 'apksigner.exe' : 'apksigner');
+            var $receiver_5 = $module$path.join(buildTools, isWin ? 'apksigner.bat' : 'apksigner');
             var block$result_2;
             if (!existsSync($receiver_5))
               throw Exception_init('Cannot find apksigner. Please setup Android before this action.');
