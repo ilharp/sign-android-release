@@ -327,7 +327,7 @@ suspend fun collectBuildTools(inputs: ActionInputs): BuildTools {
         .run { if (!fs.existsSync(this)) throw Exception("Cannot find zipalign. Please setup Android before this action.") else this }
         .apply { debug("Found zipalign: $this") }
 
-    val apksigner = path.join(buildTools, if (isWin) "apksigner.exe" else "apksigner")
+    val apksigner = path.join(buildTools, if (isWin) "apksigner.bat" else "apksigner")
         .run { if (!fs.existsSync(this)) throw Exception("Cannot find apksigner. Please setup Android before this action.") else this }
         .apply { debug("Found apksigner: $this") }
 
