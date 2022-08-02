@@ -284,7 +284,7 @@ fun collectInputs(): ActionInputs {
 
     val buildToolsVersion = getInput("buildToolsVersion")
         .run { ifBlank { process.env["ANDROID_BUILD_TOOLS_VERSION"] } }
-        .run { if (isNullOrBlank()) "29.0.3" else this }
+        .run { if (isNullOrBlank()) "33.0.0" else this }
 
     // Mask inputs.
     // In general, inputs read from secrets is automatically masked.

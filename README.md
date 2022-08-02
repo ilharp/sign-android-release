@@ -35,7 +35,7 @@ steps:
       keyAlias: ${{ secrets.ANDROID_KEY_ALIAS }}
       keyStorePassword: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
       keyPassword: ${{ secrets.ANDROID_KEY_PASSWORD }}
-      buildToolsVersion: 30.0.2
+      buildToolsVersion: 33.0.0
 
   # Upload your signed file if you want
   - uses: actions/upload-artifact@v2
@@ -56,7 +56,7 @@ steps:
       keyAlias: ${{ secrets.ANDROID_KEY_ALIAS }}
       keyStorePassword: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
       keyPassword: ${{ secrets.ANDROID_KEY_PASSWORD }}
-      buildToolsVersion: 30.0.2
+      buildToolsVersion: 33.0.0
 
   - uses: jungwinter/split@v1
     id: signed_files
@@ -90,7 +90,7 @@ signingKey|ANDROID_SIGNING_KEY|**Required.** The base64 encoded signing key used
 keyAlias|ANDROID_KEY_ALIAS|**Required.** The alias of your signing key.
 keyStorePassword|ANDROID_KEYSTORE_PASSWORD|**Required.** The password for your signing keystore.
 keyPassword|ANDROID_KEY_PASSWORD|**Optional.** The private password for your signing key.
-buildToolsVersion|ANDROID_BUILD_TOOLS_VERSION|**Optional.** The version of Android build tools to use. Defaults to `29.0.3`.
+buildToolsVersion|ANDROID_BUILD_TOOLS_VERSION|**Optional.** The version of Android build tools to use. Defaults to `33.0.0`.
 
 You can prepare your `signingKey` by running this command:
 
