@@ -778,7 +778,7 @@
     var keyPassword = isBlank($receiver_9) ? $module$process.env['ANDROID_KEY_PASSWORD'] : $receiver_9;
     var $receiver_10 = getInput('buildToolsVersion');
     var $receiver_11 = isBlank($receiver_10) ? $module$process.env['ANDROID_BUILD_TOOLS_VERSION'] : $receiver_10;
-    var buildToolsVersion = $receiver_11 == null || isBlank($receiver_11) ? '29.0.3' : $receiver_11;
+    var buildToolsVersion = $receiver_11 == null || isBlank($receiver_11) ? '33.0.0' : $receiver_11;
     tmp$ = [signingKey, keyStorePassword, keyPassword];
     for (tmp$_0 = 0; tmp$_0 !== tmp$.length; ++tmp$_0) {
       var input = tmp$[tmp$_0];
