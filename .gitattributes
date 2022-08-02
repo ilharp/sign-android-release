@@ -1,5 +1,4 @@
-* text eol=lf
+* text=auto eol=lf
 
-gradlew.bat eol=crlf
-
-*.jar -text
+*.bat text eol=crlf
+*.jar binary
