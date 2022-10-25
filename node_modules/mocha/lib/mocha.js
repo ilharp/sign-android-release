@@ -9,14 +9,12 @@
 var escapeRe = require('escape-string-regexp');
 var path = require('path');
 var builtinReporters = require('./reporters');
-var growl = require('./nodejs/growl');
 var utils = require('./utils');
 var mocharc = require('./mocharc.json');
 var Suite = require('./suite');
 var esmUtils = require('./nodejs/esm-utils');
 var createStatsCollector = require('./stats-collector');
 const {
-  warn,
   createInvalidReporterError,
   createInvalidInterfaceError,
   createMochaInstanceAlreadyDisposedError,
@@ -166,7 +164,6 @@ exports.run = function (...args) {
  * @param {boolean} [options.fullTrace] - Full stacktrace upon failure?
  * @param {string[]} [options.global] - Variables expected in global scope.
  * @param {RegExp|string} [options.grep] - Test filter given regular expression.
- * @param {boolean} [options.growl] - Enable desktop notifications?
  * @param {boolean} [options.inlineDiffs] - Display inline diffs?
  * @param {boolean} [options.invert] - Invert test filter matches?
  * @param {boolean} [options.noHighlighting] - Disable syntax highlighting?
@@ -196,7 +193,7 @@ function Mocha(options = {}) {
     .ui(options.ui)
     .reporter(
       options.reporter,
-      options.reporterOption || options.reporterOptions // for backwards compability
+      options.reporterOption || options.reporterOptions // for backwards compatibility
     )
     .slow(options.slow)
     .global(options.global);
@@ -223,7 +220,6 @@ function Mocha(options = {}) {
     'forbidOnly',
     'forbidPending',
     'fullTrace',
-    'growl',
     'inlineDiffs',
     'invert'
   ].forEach(function (opt) {
@@ -335,35 +331,26 @@ Mocha.prototype.reporter = function (reporterName, reporterOptions) {
     }
     // Try to load reporters from process.cwd() and node_modules
     if (!reporter) {
+      let foundReporter;
       try {
-        reporter = require(reporterName);
+        foundReporter = require.resolve(reporterName);
+        reporter = require(foundReporter);
       } catch (err) {
-        if (err.code === 'MODULE_NOT_FOUND') {
-          // Try to load reporters from a path (absolute or relative)
-          try {
-            reporter = require(path.resolve(utils.cwd(), reporterName));
-          } catch (_err) {
-            _err.code === 'MODULE_NOT_FOUND'
-              ? warn(`'${reporterName}' reporter not found`)
-              : warn(
-                  `'${reporterName}' reporter blew up with error:\n ${err.stack}`
-                );
-          }
-        } else {
-          warn(`'${reporterName}' reporter blew up with error:\n ${err.stack}`);
+        if (foundReporter) {
+          throw createInvalidReporterError(err.message, foundReporter);
+        }
+        // Try to load reporters from a cwd-relative path
+        try {
+          reporter = require(path.resolve(reporterName));
+        } catch (e) {
+          throw createInvalidReporterError(e.message, reporterName);
         }
       }
-    }
-    if (!reporter) {
-      throw createInvalidReporterError(
-        `invalid reporter '${reporterName}'`,
-        reporterName
-      );
     }
     this._reporter = reporter;
   }
   this.options.reporterOption = reporterOptions;
-  // alias option name is used in public reporters xunit/tap/progress
+  // alias option name is used in built-in reporters xunit/tap/progress
   this.options.reporterOptions = reporterOptions;
   return this;
 };
@@ -478,7 +465,7 @@ Mocha.prototype.loadFilesAsync = function () {
 Mocha.unloadFile = function (file) {
   if (utils.isBrowser()) {
     throw createUnsupportedError(
-      'unloadFile() is only suported in a Node.js environment'
+      'unloadFile() is only supported in a Node.js environment'
     );
   }
   return require('./nodejs/file-unloader').unloadFile(file);
@@ -658,49 +645,6 @@ Mocha.prototype.fullTrace = function (fullTrace) {
 };
 
 /**
- * Enables desktop notification support if prerequisite software installed.
- *
- * @public
- * @see [CLI option](../#-growl-g)
- * @return {Mocha} this
- * @chainable
- */
-Mocha.prototype.growl = function () {
-  this.options.growl = this.isGrowlCapable();
-  if (!this.options.growl) {
-    var detail = utils.isBrowser()
-      ? 'notification support not available in this browser...'
-      : 'notification support prerequisites not installed...';
-    console.error(detail + ' cannot enable!');
-  }
-  return this;
-};
-
-/**
- * @summary
- * Determines if Growl support seems likely.
- *
- * @description
- * <strong>Not available when run in browser.</strong>
- *
- * @private
- * @see {@link Growl#isCapable}
- * @see {@link Mocha#growl}
- * @return {boolean} whether Growl support can be expected
- */
-Mocha.prototype.isGrowlCapable = growl.isCapable;
-
-/**
- * Implements desktop notifications using a pseudo-reporter.
- *
- * @private
- * @see {@link Mocha#growl}
- * @see {@link Growl#notify}
- * @param {Runner} runner - Runner instance.
- */
-Mocha.prototype._growl = growl.notify;
-
-/**
  * Specifies whitelist of variable names to be expected in global scope.
  *
  * @public
@@ -723,7 +667,7 @@ Mocha.prototype.global = function (global) {
     });
   return this;
 };
-// for backwards compability, 'globals' is an alias of 'global'
+// for backwards compatibility, 'globals' is an alias of 'global'
 Mocha.prototype.globals = Mocha.prototype.global;
 
 /**
@@ -1046,9 +990,6 @@ Mocha.prototype.run = function (fn) {
   }
   if (options.global) {
     runner.globals(options.global);
-  }
-  if (options.growl) {
-    this._growl(runner);
   }
   if (options.color !== undefined) {
     exports.reporters.Base.useColors = options.color;
