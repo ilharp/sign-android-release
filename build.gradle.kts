@@ -9,7 +9,7 @@ buildscript {
 }
 
 plugins {
-    kotlin("js") version "1.7.0"
+    kotlin("js") version "1.7.20"
 }
 
 group = "com.ilharper"
@@ -24,7 +24,7 @@ allprojects {
 
 dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-nodejs:0.0.7")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-js:1.6.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-js:1.6.4")
 
     implementation(npm("@actions/core", "^1"))
     implementation(npm("@actions/exec", "^1"))
