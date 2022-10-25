@@ -38,7 +38,7 @@ steps:
       buildToolsVersion: 33.0.0
 
   # Upload your signed file if you want
-  - uses: actions/upload-artifact@v2
+  - uses: actions/upload-artifact@v3
     with:
       name: Signed app bundle
       path: ${{steps.sign_app.outputs.signedFile}}
