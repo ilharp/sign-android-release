@@ -58,7 +58,7 @@ steps:
       keyPassword: ${{ secrets.ANDROID_KEY_PASSWORD }}
       buildToolsVersion: 33.0.0
 
-  - uses: jungwinter/split@v1
+  - uses: jungwinter/split@v2
     id: signed_files
     with:
       msg: ${{ steps.sign_app.outputs.signedFiles }}
