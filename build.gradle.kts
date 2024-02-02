@@ -8,7 +8,7 @@ buildscript {
 }
 
 plugins {
-    kotlin("js") version "1.7.20"
+    kotlin("multiplatform") version "1.9.21"
 }
 
 group = "com.ilharper"
@@ -20,22 +20,26 @@ allprojects {
     }
 }
 
-dependencies {
-    implementation("org.jetbrains.kotlinx:kotlinx-nodejs:0.0.7")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-js:1.6.4")
-
-    implementation(npm("@actions/core", "^1"))
-    implementation(npm("@actions/exec", "^1"))
-    implementation(npm("@actions/io", "^1"))
-    implementation(npm("@actions/glob", "^0.3"))
-    implementation(npm("chalk", "^4"))
-}
-
 kotlin {
-    js(LEGACY) {
+    js(IR) {
+        nodejs {}
         useCommonJs()
         binaries.executable()
-        nodejs()
+    }
+
+    sourceSets {
+        val jsMain by getting {
+            dependencies {
+                implementation("org.jetbrains.kotlin-wrappers:kotlin-node:20.11.5-pre.693")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-js:1.6.4")
+
+                implementation(npm("@actions/core", "^1"))
+                implementation(npm("@actions/exec", "^1"))
+                implementation(npm("@actions/io", "^1"))
+                implementation(npm("@actions/glob", "^0.3"))
+                implementation(npm("chalk", "^4"))
+            }
+        }
     }
 }
 
