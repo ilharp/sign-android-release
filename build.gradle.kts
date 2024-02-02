@@ -8,7 +8,7 @@ buildscript {
 }
 
 plugins {
-    kotlin("multiplatform") version "1.9.21"
+    kotlin("multiplatform") version "1.9.22"
 }
 
 group = "com.ilharper"
@@ -32,6 +32,7 @@ kotlin {
             dependencies {
                 implementation("org.jetbrains.kotlin-wrappers:kotlin-node:20.11.5-pre.693")
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-js:1.6.4")
+                implementation("org.jetbrains.kotlin-wrappers:kotlin-actions-toolkit:0.0.1-pre.693")
 
                 implementation(npm("@actions/core", "^1"))
                 implementation(npm("@actions/exec", "^1"))

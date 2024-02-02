@@ -1,7 +1,5 @@
 @file:OptIn(DelicateCoroutinesApi::class)
 
-import NodeJS.get
-import actions.core.SummaryTableCell
 import actions.core.debug
 import actions.core.error
 import actions.core.exportVariable
@@ -17,11 +15,16 @@ import actions.exec.exec
 import actions.io.which
 import chalk.Instance
 import chalk.Options
+import js.promise.asPromise
+import js.promise.await
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.await
-import kotlinx.coroutines.promise
-import path.path
+import kotlinx.coroutines.async
+import node.fs.existsSync
+import node.fs.writeFileSync
+import node.path.path
+import node.process.Platform
+import node.process.process
 
 suspend fun main() = try {
     mainIntl()
@@ -47,8 +50,9 @@ suspend fun mainIntl() {
     val globPatterns = "${inputs.releaseDir}**/*.apk\n${inputs.releaseDir}**/*.aab"
         .apply { debug("Glob patterns:\n$this") }
     // Use @action/glob to glob files
-    val sourceFiles = actions.glob.create(globPatterns).await()
-        .glob().await()
+    val sourceFiles = actions.glob.create(globPatterns)
+        .glob()
+        .await()
         // Map path of files to relative
         .map { path.relative(process.cwd(), it) }
         .map { path.relative(inputs.releaseDir, it) }
@@ -72,13 +76,14 @@ suspend fun mainIntl() {
     val signResult = sourceFiles.mapIndexed { index, sourceFile ->
         var signedFile = ""
         group("[${index + 1}/$sourceFilesCount] $sourceFile") {
-            if (sourceFile.endsWith(".apk")) GlobalScope.promise {
-                signedFile = signApk(chalk, sourceFile, inputs, buildTools)
-            }
-            else GlobalScope.promise {
+            if (sourceFile.endsWith(".apk")) {
+                GlobalScope.async {
+                    signedFile = signApk(chalk, sourceFile, inputs, buildTools)
+                }.asPromise()
+            } else GlobalScope.async {
                 signedFile = signAab(chalk, sourceFile, inputs, buildTools)
-            }
-        }.await()
+            }.asPromise()
+        }
         Pair(sourceFile, signedFile)
     }
 
@@ -112,17 +117,17 @@ suspend fun mainIntl() {
         .addTable(
             mutableListOf(
                 arrayOf(
-                    object : SummaryTableCell {
-                        override var data = "Index"
-                        override var header: Boolean? = true
+                    object {
+                        var data = "Index"
+                        var header: Boolean? = true
                     },
-                    object : SummaryTableCell {
-                        override var data = "Source File"
-                        override var header: Boolean? = true
+                    object {
+                        var data = "Source File"
+                        var header: Boolean? = true
                     },
-                    object : SummaryTableCell {
-                        override var data = "Signed File"
-                        override var header: Boolean? = true
+                    object {
+                        var data = "Signed File"
+                        var header: Boolean? = true
                     }
                 )
             )
@@ -130,14 +135,14 @@ suspend fun mainIntl() {
                     signResult.forEachIndexed { index, (sourceFile, signedFile) ->
                         add(
                             arrayOf(
-                                object : SummaryTableCell {
-                                    override var data = (index + 1).toString()
+                                object {
+                                    var data = (index + 1).toString()
                                 },
-                                object : SummaryTableCell {
-                                    override var data = sourceFile
+                                object {
+                                    var data = sourceFile
                                 },
-                                object : SummaryTableCell {
-                                    override var data = signedFile
+                                object {
+                                    var data = signedFile
                                 }
                             )
                         )
@@ -172,7 +177,7 @@ suspend fun signApk(
     exec(
         buildTools.zipalign,
         arrayOf("-p", "-f", "-v", "4", sourceFilePath, alignedFile)
-    ).await()
+    )
 
     info(chalk.blue("Signing APK file."))
     exec(
@@ -196,7 +201,7 @@ suspend fun signApk(
 
                 add(alignedFile)
             }.toTypedArray()
-    ).await()
+    )
 
     return sourceFile.dropLast(4) + "-signed.apk"
 }
@@ -241,13 +246,13 @@ suspend fun signAab(
                 add(inputs.keyAlias)
             }
             .toTypedArray()
-    ).await()
+    )
 
     info(chalk.blue("Aligning AAB file."))
     exec(
         buildTools.zipalign,
         arrayOf("-p", "-f", "-v", "4", signedFile, alignedFile)
-    ).await()
+    )
 
     return sourceFile.dropLast(4) + "-signed.aab"
 }
@@ -269,7 +274,7 @@ fun collectInputs(): ActionInputs {
 
     // Write key to file
     val signingKey = path.join(releaseDir, "key.jks")
-    fs.writeFileSync(signingKey, signingKeyB64, "base64")
+    writeFileSync(signingKey, signingKeyB64, "base64")
 
     val keyAlias = getInput("keyAlias")
         .run { ifBlank { process.env["ANDROID_KEY_ALIAS"] } }
@@ -313,26 +318,26 @@ interface ActionInputs {
 }
 
 suspend fun collectBuildTools(inputs: ActionInputs): BuildTools {
-    val isWin = process.platform == "win32"
+    val isWin = process.platform == Platform.win32
 
     val androidHome = process.env["ANDROID_HOME"]
         .run { if (isNullOrBlank()) throw Exception("Cannot find Android SDK installation. Please setup Android before this action.") else this }
         .apply { debug("Found Android SDK: $this") }
 
     val buildTools = path.join(androidHome, "build-tools", inputs.buildToolsVersion)
-        .run { if (!fs.existsSync(this)) throw Exception("Cannot find Android build tools. Please setup Android before this action.") else this }
+        .run { if (!existsSync(this)) throw Exception("Cannot find Android build tools. Please setup Android before this action.") else this }
         .apply { debug("Found Android build-tools: $this") }
 
     val zipalign = path.join(buildTools, if (isWin) "zipalign.exe" else "zipalign")
-        .run { if (!fs.existsSync(this)) throw Exception("Cannot find zipalign. Please setup Android before this action.") else this }
+        .run { if (!existsSync(this)) throw Exception("Cannot find zipalign. Please setup Android before this action.") else this }
         .apply { debug("Found zipalign: $this") }
 
     val apksigner = path.join(buildTools, if (isWin) "apksigner.bat" else "apksigner")
-        .run { if (!fs.existsSync(this)) throw Exception("Cannot find apksigner. Please setup Android before this action.") else this }
+        .run { if (!existsSync(this)) throw Exception("Cannot find apksigner. Please setup Android before this action.") else this }
         .apply { debug("Found apksigner: $this") }
 
-    val jarsigner = which(if (isWin) "jarsigner.exe" else "jarsigner", false).await()
-        .run { if (!fs.existsSync(this)) throw Exception("Cannot find jarsigner. Please setup JDK before this action.") else this }
+    val jarsigner = which(if (isWin) "jarsigner.exe" else "jarsigner", false)
+        .run { if (!existsSync(this)) throw Exception("Cannot find jarsigner. Please setup JDK before this action.") else this }
         .apply { debug("Found jarsigner: $this") }
 
     return object : BuildTools {
