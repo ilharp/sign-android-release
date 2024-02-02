@@ -5,11 +5,9 @@
   "workspaces": [
     "packages/sign-android-release",
     "packages/sign-android-release-test",
-    "packages_imported/kotlin/1.7.20",
-    "packages_imported/17def1782b5ee417-kotlinx-nodejs-jsLegacy/0.0.7",
-    "packages_imported/kotlinx-coroutines-core/1.6.4",
-    "packages_imported/kotlinx-atomicfu/0.17.3",
-    "packages_imported/kotlin-test-js-runner/1.7.20"
+    "packages_imported/kotlin-node/20.11.5-pre.693",
+    "packages_imported/kotlin-actions-toolkit/0.0.1-pre.693",
+    "packages_imported/kotlin-test-js-runner/0.0.1"
   ],
   "resolutions": {},
   "devDependencies": {},

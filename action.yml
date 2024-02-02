@@ -2,7 +2,7 @@ name: Sign Android release 2
 description: Sign APK or AAB files
 author: Il Harper
 runs:
-  using: node16
+  using: node20
   main: packages/sign-android-release/kotlin/sign-android-release.js
 branding:
   icon: award

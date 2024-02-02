@@ -3,15 +3,20 @@
   "version": "0.1.0",
   "main": "kotlin/sign-android-release.js",
   "devDependencies": {
-    "source-map-support": "0.5.21",
-    "dukat": "0.5.8-rc.4"
+    "typescript": "5.0.4",
+    "source-map-support": "0.5.21"
   },
   "dependencies": {
     "@actions/core": "^1",
     "@actions/exec": "^1",
     "@actions/io": "^1",
     "@actions/glob": "^0.3",
-    "chalk": "^4"
+    "chalk": "^4",
+    "format-util": "^1.0.5",
+    "@actions/artifact": "^1.1.2",
+    "@actions/cache": "^3.2.2",
+    "@actions/http-client": "^2.2.0",
+    "@actions/tool-cache": "^2.0.1"
   },
   "peerDependencies": {},
   "optionalDependencies": {},
