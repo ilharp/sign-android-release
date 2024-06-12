@@ -2,7 +2,7 @@
 <h1>Sign Android Release</h1>
 <p>A GitHub action to sign an APK or AAB.</p>
 
-![Workflow](https://img.shields.io/github/workflow/status/ilharp/sign-android-release/Build?style=flat-square)
+![Workflow](https://img.shields.io/github/actions/workflow/status/ilharp/sign-android-release/build.yml?branch=master&style=flat-square)
 [![License](https://img.shields.io/github/license/ilharp/sign-android-release?style=flat-square)](https://github.com/ilharp/sign-android-release/blob/master/LICENSE)
 
 </div>
