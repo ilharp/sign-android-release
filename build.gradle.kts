@@ -41,7 +41,7 @@ spotless {
 
     kotlin {
         target("**/*.kt")
-        ktlint().setUseExperimental(true)
+        ktlint("1.3.1")
         trimTrailingWhitespace()
         indentWithSpaces()
         endWithNewline()
@@ -49,7 +49,7 @@ spotless {
 
     kotlinGradle {
         target("**/*.kts")
-        ktlint().setUseExperimental(true)
+        ktlint("1.3.1")
         trimTrailingWhitespace()
         indentWithSpaces()
         endWithNewline()
