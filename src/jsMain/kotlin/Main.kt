@@ -15,8 +15,7 @@ import actions.exec.exec
 import actions.io.which
 import chalk.Instance
 import chalk.Options
-import js.promise.asPromise
-import js.promise.await
+import js.coroutines.asPromise
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
