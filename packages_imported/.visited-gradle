@@ -1,46 +1,46 @@
 {
   "version": "9",
   "items": {
-    "cb7d13c12a97693448b82c9574c2fd3e": {
-      "src": "/home/runner/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-js/1.9.22/95e0c81ba7ee3d36c7d7312a63f1b0bae454b3fe/kotlin-stdlib-js-1.9.22.klib"
+    "bbae3b0bd25d7aee55487c6df3d44623": {
+      "src": "/home/runner/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-js/2.0.10/ba80a6829b558b4d1f5a08ca9a218aa917e98de3/kotlin-stdlib-js-2.0.10.klib"
     },
-    "b50857453dcb30a49d765d6aca822dfe": {
-      "src": "/home/runner/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-dom-api-compat/1.9.22/3c0ac04445c1aeec4366d69e1791cd6ad31ddc07/kotlin-dom-api-compat-1.9.22.klib"
+    "3842d86367b245b9d6e22b89cfc4dada": {
+      "src": "/home/runner/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-dom-api-compat/2.0.10/bf998bede3d1e04ebe4303794efbbac59787a848/kotlin-dom-api-compat-2.0.10.klib"
     },
-    "00928edb0235ae7987ab9a2cce1ee996": {
-      "src": "/home/runner/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin-wrappers/kotlin-node-js/20.11.5-pre.693/21c2e95318f69a78065c94ca9d9d071711f7733d/kotlin-node-js-20.11.5-pre.693.klib",
-      "target": "kotlin-node/20.11.5-pre.693"
+    "480ff2bf39fe18b5c4632c7594d109a2": {
+      "src": "/home/runner/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin-wrappers/kotlin-node-js/20.14.10-pre.793/5507b9ce6dc8366828e568c449bd4ab923353040/kotlin-node-js-20.14.10-pre.793.klib",
+      "target": "kotlin-node/20.14.10-pre.793"
     },
-    "230a3f81c0246659f5ec0d4adb0937a9": {
-      "src": "/home/runner/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin-wrappers/kotlin-web-js/1.0.0-pre.693/a679262165a25c22c17c31f7cc620b60443c5fb0/kotlin-web-js-1.0.0-pre.693.klib"
+    "11fd390e89326c8ccacf3ad86f309d78": {
+      "src": "/home/runner/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin-wrappers/kotlin-web-js/1.0.0-pre.793/d0e6d9a376ab2c4736565f5b440b4ee76903b494/kotlin-web-js-1.0.0-pre.793.klib"
     },
-    "5c6c54ef04495b0d10ef06d52810f8a5": {
-      "src": "/home/runner/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin-wrappers/kotlin-js-js/1.0.0-pre.693/37e6380253d02d877ebef48dab6042e77e71e5da/kotlin-js-js-1.0.0-pre.693.klib"
+    "a8a8f4b24581a72745fd6e41997cc4f2": {
+      "src": "/home/runner/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin-wrappers/kotlin-js-js/1.0.0-pre.793/5e0f32552a34360de80f058263f3472af0116091/kotlin-js-js-1.0.0-pre.793.klib"
     },
-    "15b354a66801b55f146e3be1466a09be": {
-      "src": "/home/runner/.gradle/caches/modules-2/files-2.1/io.github.turansky.seskar/seskar-react-js/2.32.0/a56439ce48d94b559b21535fbeaae87043c824ce/seskar-react-js-2.32.0.klib"
+    "7323f2e101d0df459c3ca907e65ee2ca": {
+      "src": "/home/runner/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-coroutines-core-js/1.9.0-RC.2/155bfdad6f6ebdde0a8049053675623eb3a1e36f/kotlinx-coroutines-core-js-1.9.0-RC.2.klib"
     },
-    "0113bfea878b4c37334d4ec6cdd3a875": {
-      "src": "/home/runner/.gradle/caches/modules-2/files-2.1/io.github.turansky.seskar/seskar-core-js/2.32.0/3b20d35c7dd79ceac8c7b79e127a57ecd36fcc5d/seskar-core-js-2.32.0.klib"
+    "dd02831410adcddecefea4c35d5f321e": {
+      "src": "/home/runner/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/atomicfu-js/0.25.0/913782d5387faf78c6ceab08ed19a290bcd000f9/atomicfu-js-0.25.0.klib"
     },
-    "67c827c197d695ce9ac33c6fbf6b2966": {
-      "src": "/home/runner/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-coroutines-core-js/1.7.3/6b2e7c874877434e53fbf736eaa05d6dda02d642/kotlinx-coroutines-core-jsir-1.7.3.klib"
+    "53e4d184e3f599ec39ce21b9cfb9f9dc": {
+      "src": "/home/runner/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlinx-atomicfu-runtime/2.0.0/5dd3b6879cd1d19249083132503a739f8558426d/kotlinx-atomicfu-runtime-2.0.0.klib"
     },
-    "f53756ee88cef419b2e73033923a2e9c": {
-      "src": "/home/runner/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/atomicfu-js/0.21.0/c9f79cd6efe7bfd96e7df26758d7bee371235627/atomicfu-jsir-0.21.0.klib"
+    "d897e8ea82a14eeb6bb2d0562c3643f3": {
+      "src": "/home/runner/.gradle/caches/modules-2/files-2.1/io.github.turansky.seskar/seskar-core-js/3.13.0/d1facad4b020e09fc2c8283269ea15f99008e712/seskar-core-js-3.13.0.klib"
     },
-    "23c2e72b0a4e6406a275954a020fea0b": {
-      "src": "/home/runner/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-common/1.8.20/5eddaaf234c8c49d03eebeb6a14feb7f90faca71/kotlin-stdlib-common-1.8.20.jar"
+    "a8ce5faa43624a2656e65302287c4793": {
+      "src": "/home/runner/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-js-plain-objects/2.0.10/823f165f0554f8c5fa13ed5a0be4f0aae83effe5/kotlin-js-plain-objects-2.0.10.klib"
     },
-    "15b3b054ab4a6eda4a8c899277426209": {
-      "src": "/home/runner/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlinx-atomicfu-runtime/1.8.20/8ccfa77dc6cd3ff5ffaad24ea15747327d4492ea/kotlinx-atomicfu-runtime-1.8.20.klib"
+    "783aa70998222244b90fa44e50bd235f": {
+      "src": "/home/runner/.gradle/caches/modules-2/files-2.1/io.github.turansky.seskar/seskar-react-js/3.13.0/6ba0ed952f808e74e1e73e8f2ac71bb375f5b484/seskar-react-js-3.13.0.klib"
     },
-    "1f8a3f062c0cd105e3b08970ce6f36c8": {
-      "src": "/home/runner/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin-wrappers/kotlin-actions-toolkit-js/0.0.1-pre.693/f3fd572a333a748a37e2615130e8bba4d13caad5/kotlin-actions-toolkit-js-0.0.1-pre.693.klib",
-      "target": "kotlin-actions-toolkit/0.0.1-pre.693"
+    "e43049402f09bc8b244d515c65d5897b": {
+      "src": "/home/runner/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin-wrappers/kotlin-actions-toolkit-js/1.0.0-pre.793/2247cc47a27a78411bc109b9a9cbf71a15ab97a5/kotlin-actions-toolkit-js-1.0.0-pre.793.klib",
+      "target": "kotlin-actions-toolkit/1.0.0-pre.793"
     },
-    "a66860f155cb10a237acb5f7d0f6d0e3": {
-      "src": "/home/runner/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-test-js-runner/1.9.22/e9b1fc55af69eb09d63b271d17c217d9483241cc/kotlin-test-js-runner-1.9.22.jar",
+    "b4d60d3d5792ff3e790387848e667a0d": {
+      "src": "/home/runner/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-test-js-runner/2.0.10/ade1b233b953dd2b2d2e0daf82af735a4a46d700/kotlin-test-js-runner-2.0.10.jar",
       "target": "kotlin-test-js-runner/0.0.1"
     }
   }

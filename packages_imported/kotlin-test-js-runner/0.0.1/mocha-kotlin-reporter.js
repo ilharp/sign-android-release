@@ -63,6 +63,7 @@ function formatMessage() {
  * Copyright (c) 2016 Jamie Sherriff
  */
 
+
 const processPID = process.pid.toString();
 
 let Base, log, logError;

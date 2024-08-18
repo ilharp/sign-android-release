@@ -1,8 +1,6 @@
 {
   "name": "kotlin-test-js-runner",
   "version": "0.0.1",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
   "devDependencies": {},
   "dependencies": {
     "format-util": "^1.0.5"

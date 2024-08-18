@@ -2,6 +2,9 @@
   'use strict';
   //region block: pre-declaration
   //endregion
+  function getIndexedValue(target, index) {
+    return target[index];
+  }
   return _;
 }(module.exports));
 
