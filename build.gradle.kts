@@ -31,8 +31,7 @@ kotlin {
     }
 }
 
-// apply(plugin = "com.diffplug.spotless")
-configure<com.diffplug.gradle.spotless.SpotlessExtension> {
+spotless {
     format("misc") {
         target("**/*.md", "**/*.editorconfig", "**/*.gitignore", "**/*.gitattributes")
         trimTrailingWhitespace()
