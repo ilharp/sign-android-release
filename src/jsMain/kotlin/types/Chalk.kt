@@ -10,10 +10,13 @@ external interface Options {
         set(value) = definedExternally
 }
 
-external class Instance(options: Options?) {
+external class Instance(
+    options: Options?,
+) {
     @Suppress("DEPRECATION")
     @nativeInvoke
     operator fun invoke(vararg text: Any): String
+
     var level: Any
     var rgb: (red: Number, green: Number, blue: Number) -> Instance
     var hex: (color: String) -> Instance
