@@ -1,24 +1,11 @@
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath("com.diffplug.spotless:spotless-plugin-gradle:6.6.1")
-    }
-}
-
 plugins {
-    kotlin("multiplatform") version "1.9.22"
+    alias(libs.plugins.jetbrains.kotlin.multiplatform)
+
+    alias(libs.plugins.spotless)
 }
 
 group = "com.ilharper"
 version = "0.1.0"
-
-allprojects {
-    repositories {
-        mavenCentral()
-    }
-}
 
 kotlin {
     js(IR) {
@@ -44,7 +31,7 @@ kotlin {
     }
 }
 
-apply(plugin = "com.diffplug.spotless")
+// apply(plugin = "com.diffplug.spotless")
 configure<com.diffplug.gradle.spotless.SpotlessExtension> {
     format("misc") {
         target("**/*.md", "**/*.editorconfig", "**/*.gitignore", "**/*.gitattributes")

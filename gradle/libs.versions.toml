@@ -1,0 +1,11 @@
+[versions]
+kotlin = "1.9.22"
+
+spotless = "6.6.1"
+
+[libraries]
+
+[plugins]
+jetbrains-kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+
+spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
