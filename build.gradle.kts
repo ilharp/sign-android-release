@@ -17,9 +17,9 @@ kotlin {
     sourceSets {
         val jsMain by getting {
             dependencies {
-                implementation("org.jetbrains.kotlin-wrappers:kotlin-node:20.11.5-pre.693")
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-js:1.6.4")
-                implementation("org.jetbrains.kotlin-wrappers:kotlin-actions-toolkit:0.0.1-pre.693")
+                implementation(libs.kotlin.node)
+                implementation(libs.kotlinx.coroutines.core.js)
+                implementation(libs.kotlin.actions.toolkit)
 
                 implementation(npm("@actions/core", "^1"))
                 implementation(npm("@actions/exec", "^1"))

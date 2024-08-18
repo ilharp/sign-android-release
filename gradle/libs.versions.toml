@@ -4,6 +4,11 @@ kotlin = "1.9.22"
 spotless = "6.6.1"
 
 [libraries]
+kotlin-node = { group = "org.jetbrains.kotlin-wrappers", name = "kotlin-node", version = "20.11.5-pre.693" }
+
+kotlinx-coroutines-core-js = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core-js", version = "1.6.4" }
+
+kotlin-actions-toolkit = { group = "org.jetbrains.kotlin-wrappers", name = "kotlin-actions-toolkit", version = "0.0.1-pre.693" }
 
 [plugins]
 jetbrains-kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
