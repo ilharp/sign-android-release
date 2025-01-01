@@ -372,7 +372,9 @@ suspend fun collectBuildTools(inputs: ActionInputs): BuildTools {
                         this,
                     )
                 ) {
-                    throw Exception("Cannot find Android build tools. Please setup Android before this action. Hint: version ${inputs.buildToolsVersion} not found(possibly a new version was released, please explicity specify via input buildToolsVersion)")
+                    throw Exception(
+                        "Cannot find Android build tools. Please setup Android before this action. Hint: version ${inputs.buildToolsVersion} not found(possibly a new version was released, please explicity specify via input buildToolsVersion)",
+                    )
                 } else {
                     this
                 }
