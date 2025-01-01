@@ -281,7 +281,7 @@ fun collectInputs(): ActionInputs {
             .run { ifBlank { process.env["ANDROID_SIGNING_KEY"] } }
             .run {
                 if (isNullOrBlank()) {
-                    throw Exception("Cannot find signingKey/ANDROID_SIGNING_KEY. Check your input in workflow.")
+                    throw Exception("Cannot find input signingKey/env ANDROID_SIGNING_KEY. Check your input in workflow.")
                 } else {
                     this
                 }
@@ -296,7 +296,7 @@ fun collectInputs(): ActionInputs {
             .run { ifBlank { process.env["ANDROID_KEY_ALIAS"] } }
             .run {
                 if (isNullOrBlank()) {
-                    throw Exception("Cannot find keyAlias/ANDROID_KEY_ALIAS. Check your input in workflow.")
+                    throw Exception("Cannot find input keyAlias/env ANDROID_KEY_ALIAS. Check your input in workflow.")
                 } else {
                     this
                 }
@@ -307,7 +307,7 @@ fun collectInputs(): ActionInputs {
             .run { ifBlank { process.env["ANDROID_KEYSTORE_PASSWORD"] } }
             .run {
                 if (isNullOrBlank()) {
-                    throw Exception("Cannot find keyStorePassword/ANDROID_KEYSTORE_PASSWORD. Check your input in workflow.")
+                    throw Exception("Cannot find input keyStorePassword/env ANDROID_KEYSTORE_PASSWORD. Check your input in workflow.")
                 } else {
                     this
                 }
@@ -357,7 +357,7 @@ suspend fun collectBuildTools(inputs: ActionInputs): BuildTools {
             .run {
                 if (isNullOrBlank()) {
                     throw Exception(
-                        "Cannot find Android SDK installation. Please setup Android before this action.",
+                        "Cannot find Android SDK installation. Please setup Android before this action. Hint: env ANDROID_HOME not set or empty",
                     )
                 } else {
                     this
@@ -372,7 +372,7 @@ suspend fun collectBuildTools(inputs: ActionInputs): BuildTools {
                         this,
                     )
                 ) {
-                    throw Exception("Cannot find Android build tools. Please setup Android before this action.")
+                    throw Exception("Cannot find Android build tools. Please setup Android before this action. Hint: version ${inputs.buildToolsVersion} not found(possibly a new version was released, please explicity specify via input buildToolsVersion)")
                 } else {
                     this
                 }
