@@ -161,7 +161,7 @@
     // Inline function 'kotlin.text.isNullOrBlank' call
     // Inline function 'kotlin.contracts.contract' call
     if ($this$run_1 == null || isBlank($this$run_1)) {
-      throw Exception_init_$Create$('Cannot find signingKey/ANDROID_SIGNING_KEY. Check your input in workflow.');
+      throw Exception_init_$Create$('Cannot find input signingKey/env ANDROID_SIGNING_KEY. Check your input in workflow.');
     } else {
       tmp_3 = $this$run_1;
     }
@@ -193,7 +193,7 @@
     // Inline function 'kotlin.text.isNullOrBlank' call
     // Inline function 'kotlin.contracts.contract' call
     if ($this$run_2 == null || isBlank($this$run_2)) {
-      throw Exception_init_$Create$('Cannot find keyAlias/ANDROID_KEY_ALIAS. Check your input in workflow.');
+      throw Exception_init_$Create$('Cannot find input keyAlias/env ANDROID_KEY_ALIAS. Check your input in workflow.');
     } else {
       tmp_5 = $this$run_2;
     }
@@ -219,7 +219,7 @@
     // Inline function 'kotlin.text.isNullOrBlank' call
     // Inline function 'kotlin.contracts.contract' call
     if ($this$run_3 == null || isBlank($this$run_3)) {
-      throw Exception_init_$Create$('Cannot find keyStorePassword/ANDROID_KEYSTORE_PASSWORD. Check your input in workflow.');
+      throw Exception_init_$Create$('Cannot find input keyStorePassword/env ANDROID_KEYSTORE_PASSWORD. Check your input in workflow.');
     } else {
       tmp_7 = $this$run_3;
     }
@@ -925,7 +925,7 @@
             var $this$run = node_process_process_dcpv5o.env['ANDROID_HOME'];
             var tmp_3;
             if ($this$run == null || isBlank($this$run)) {
-              throw Exception_init_$Create$('Cannot find Android SDK installation. Please setup Android before this action.');
+              throw Exception_init_$Create$('Cannot find Android SDK installation. Please setup Android before this action. Hint: env ANDROID_HOME not set or empty');
             } else {
               tmp_3 = $this$run;
             }
@@ -937,7 +937,7 @@
             var $this$run_0 = node_path_path_1155cy.join(this.bm_1, 'build-tools', this.zl_1.io());
             var tmp_5;
             if (!existsSync($this$run_0)) {
-              throw Exception_init_$Create$('Cannot find Android build tools. Please setup Android before this action.');
+              throw Exception_init_$Create$('Cannot find Android build tools. Please setup Android before this action. Hint: version ' + this.zl_1.io() + ' not found(possibly a new version was released, please explicity specify via input buildToolsVersion)');
             } else {
               tmp_5 = $this$run_0;
             }

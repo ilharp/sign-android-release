@@ -65,8 +65,8 @@
   var intercepted = kotlin_kotlin.$_$.p1;
   var getKClassFromExpression = kotlin_kotlin.$_$.a;
   var removeFirstOrNull = kotlin_kotlin.$_$.k1;
-  var KtList = kotlin_kotlin.$_$.d1;
   var Collection = kotlin_kotlin.$_$.c1;
+  var KtList = kotlin_kotlin.$_$.d1;
   var CancellationException_init_$Init$ = kotlin_kotlin.$_$.i;
   var ensureNotNull = kotlin_kotlin.$_$.n3;
   var getStringHashCode = kotlin_kotlin.$_$.k2;
@@ -129,7 +129,7 @@
   initMetadataForClass(Symbol, 'Symbol');
   initMetadataForClass(SetTimeoutBasedDispatcher, 'SetTimeoutBasedDispatcher', VOID, CoroutineDispatcher, VOID, [1]);
   initMetadataForObject(NodeDispatcher, 'NodeDispatcher', VOID, SetTimeoutBasedDispatcher, VOID, [1]);
-  initMetadataForClass(MessageQueue, 'MessageQueue', VOID, VOID, [KtList, Collection]);
+  initMetadataForClass(MessageQueue, 'MessageQueue', VOID, VOID, [Collection, KtList]);
   initMetadataForClass(ScheduledMessageQueue, 'ScheduledMessageQueue', VOID, MessageQueue);
   initMetadataForClass(WindowMessageQueue, 'WindowMessageQueue', VOID, MessageQueue);
   initMetadataForClass(UnconfinedEventLoop, 'UnconfinedEventLoop', UnconfinedEventLoop, EventLoop);
