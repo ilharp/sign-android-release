@@ -6,7 +6,7 @@ spotless = "6.25.0"
 [libraries]
 kotlin-node = { group = "org.jetbrains.kotlin-wrappers", name = "kotlin-node", version = "20.14.10-pre.793" }
 
-kotlinx-coroutines-core-js = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core-js", version = "1.9.0-RC.2" }
+kotlinx-coroutines-core-js = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core-js", version = "1.10.2" }
 
 kotlin-actions-toolkit = { group = "org.jetbrains.kotlin-wrappers", name = "kotlin-actions-toolkit", version = "1.0.0-pre.793" }
 
